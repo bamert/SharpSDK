@@ -1,0 +1,855 @@
+<HTML>
+<HEAD>
+<TITLE>
+BASIC COMMAND DICTIONARY
+</TITLE>
+
+</HEAD>
+<BODY>
+
+<A NAME=ongosub>
+<H3>ON...GOSUB</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ON expression GOSUB   line number 1 [, line number 2 ...]
+                              *label 1  [, *label 2 ...]
+
+<I><B>See Also:</B></I> GOSUB, GOTO, ON...GOTO  
+
+<I><B>PURPOSE:</B></I> 
+Executes one of a set of subroutines, depending on the value of a control expression.  
+
+<I><B>REMARKS:</B></I>  
+When ON... GOSUB is executed, the expression between ON and GOSUB is evaluated and 
+reduced to an integer. If the value of the integer is 1, control is transferred to line number 1 
+or *label 1 in the list, as in a normal GOSUB . If the expression is 2, control is transferred to 
+line number 2 or *label 2 in the list, and so forth.  
+
+Note:  
+Be sure to place a space just before the GOSUB command. Otherwise it may be regarded 
+as a variable.  
+
+If the expression is zero, negative, or larger than the number of line numbers provided in the 
+list, no subroutine is executed and execution proceeds with the next line of the program.
+
+An error occurs if the value of the expression is -32769 or less or 32768 or more.  
+
+Use commas (,) to separate line numbers or *labels in the list.  
+
+<I><B>EXAMPLE:</B></I>
+ 10 WAIT
+ 15 INPUT A  
+ 20 ON A GOSUB 100,200,300  
+ 30 END  
+100 PRINT "FIRST"  
+110 RETURN  
+200 PRINT "SECOND"  
+210 RETURN  
+300 PRINT "THIRD"  
+310 RETURN  
+
+An entry of 1 displays "FIRST";2 displays "SECOND"; 3 displays "THIRD". Any other entry dose not produce 
+any display. 
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=ongoto>
+<H3>ON...GOTO</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ON expression GOTO  line number 1 [, line number 2 ...]
+                           *label 1 [, *label 2 ...]
+
+<I><B>See Also:</B></I> GOSUB, GOTO, ON...GOSUB  
+
+<I><B>PURPOSE:</B></I> 
+Transfers control to one of a set of locations, depending on the value of a control 
+expression.  
+
+<I><B>REMARKS:</B></I>  
+When ON...GOTO is executed the expression between ON and GOTO is evaluated and 
+reduced to an integer. If the value of the integer is 1, control is transferred to line number 1 
+or *label 1 in the list. If the expression is 2, control is transferred to line number 2 or *label 2 
+in the list, and so forth.  
+
+Note: 
+Be sure to place a space just before the GOTO command. Otherwise it may be regarded as 
+a variable.  
+
+If the expression is zero, negative, or larger than the number of line numbers provided in the 
+list, execution proceeds with the next line of the program.  
+
+An error occurs if the value of the expression is -32769 or less or 32768 or more.  
+
+Use commas (,) to separate line numbers or *labels in the list.  
+
+<I><B>EXAMPLE:</B></I>  
+ 10 WAIT
+ 15 INPUT A  
+ 20 ON A GOTO 100,200,300  
+ 30 GOTO 900  
+100 PRINT "FIRST"  
+110 GOTO 900  
+200 PRINT "SECOND"  
+210 GOTO 900  
+300 PRINT "THIRD"  
+310 GOTO 900  
+900 END 
+
+An entry of 1 displays "FIRST"; 2 displays "SECOND"; 3 displays "THIRD ". Any other entry does not 
+produce any display.  
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=or>
+<H3>OR</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> Expression OR expression
+          Conditional expression OR conditional expression
+
+<I><B>See Also:</B></I> AND, NOT, XOR, IF
+
+<I><B>PURPOSE:</B></I> 
+Finds out a logical addition between expressions. Also, 
+It connects conditional expressions.
+
+<I><B>REMARKS:</B></I> 
+* Values of logical additions are as follows in digital
+numbers:
+1 OR 1=1    0 OR 1=1
+1 OR 0=1    0 OR 0=0
+
+When finding logical additions in decimal numbers, the decimal numbers
+are converted into digital ones to find logical addition of each digit
+and then the results are turned back to be in decimal numbers. 
+
+For example, the logical addition between 41 and 27 is calculated as
+follows:
+41 OR 27=59
+
+41 and 27 are converted into digital numbers(101001 and 011011) and OR in each digit is
+taken off. Then the result(111011) is converted back to be in decimal number which is 59.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=point>
+<H3>POINT</H3>
+</A>
+<PRE>
+
+<I><B>FORMAT:</B></I> POINT (expression 1,expression 2)  
+
+<I><B>See Also:</B></I> GCURSOR, PSET, PRESET  
+
+<I><B>PURPOSE:</B></I>  
+Returns the status of a specified dot.  
+
+<I><B>REMARKS:</B></I>  
+POINT returns 1 if the dot specified by coordinates (expression 1, expression 2) is set,and 
+returns zero if it is cleared. If the specified dot is outside the display boundaries, the 
+command returns -1.  
+
+The values of expressions 1 and 2 may be within the range of -32768 to 32767.A dot within 
+the display boundaries is addressed only if the value of expression 1 is 0 to 238 and that of 
+expression 2 is 0 to 69.  
+
+EXANPLE:  
+ 10 CLS
+ 15 A = 75
+ 20 LINE (50,0) - (50,31)	Draws two vertical lines.  
+ 30 LINE (100,0) - (100,31)
+ 40 PSET (A,16) 		Sets a dot between the two lines.  
+ 50 B = POINT (A + 1,16)	Tests whether the dot on the right side of the active dot is
+				 active or not.  
+ 60 IF B THEN 150	If it is set , go to line 150.  
+ 70 PSET (A + 1,16)	If it is cleared, set it.  
+ 80 PRESET (A,16)	Inactivates the dot which was first set.  
+ 90 A = A + 1		Increments the coordinate to address the next dot position.  
+100 GOTO 50			Returns to line 50.  
+150 B = POINT (A - 1,16)	Tests whether the dot on the left side of the active dot is active 
+				or not.  
+160 IF B THEN 50	If it is set, go to line 50.  
+170 PSET (A - 1,16)	If it is cleared, set it.  
+180 PRESET (A,16)	Clears the dot which was first set.  
+190 A = A - 1		Decrements the coordinate to address the preceding dot 
+			position.  
+200 GOTO 150		Go to line 150.  
+
+Executing this program causes a dot to move back and forth between the two vertical lines.
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=preset>
+<H3>PRESET</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> PRESET (expression 1, expression 2)  
+
+<I><B>See Also:</B></I> PSET, GCURSOR, POINT  
+
+<I><B>PURPOSE:</B></I>  
+Clears (resets) a dot at the specified coordinates on the display.  
+
+<I><B>REMARKS:</B></I>  
+PRESET clears the dot at the specified (expression 1,expression 2).  
+
+The values of expression 1 and 2 may be within the range of -32768 to 32767. A dot within 
+the display boundaries is addressed only if the value of expression 1 is 0 to 238 and that of 
+expression 2 is 0 to 69.  
+
+<I><B>EXAMPLE:</B></I>  
+10 CLS  
+20 LINE (20,0)-(130,31),BF  
+30 FOR X = -25 TO 25 STEP 0.5  
+40 Y = -1*SQR ABS(25*25-X*X)  
+50 PRESET (X+75,Y+31)  
+60 NEXT X  
+70 A$=INKEY$(1)  
+
+Executing this program draws a half circle within a solid rectangule.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=print>
+<H3>PRINT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1.PRINT    expression   [, expression ] [,]
+	            string          string
+         2.PRINT    expression   [; expression ] [;]
+                    string          string
+         3.PRINT USING "format"  ;  expression   [, or ; expression ] [, or ;]
+                                    string          string
+         4.PRINT  
+
+<I><B>See Also:</B></I> USING, WAIT, LOCATE  
+
+<I><B>PURPOSE:</B></I> 
+Displays information.  
+
+<I><B>REMARKS:</B></I>  
+PRINT displays prompt information, results of calculations, etc.  
+
+If the start position is specified by the LOCATE statement, the data will be displayed from 
+the specified location.  
+If a comma (,) or semicolon (;) is at the end of the statement, the contents will be displayed 
+continuously.  
+
+1) Format a single item to be displayed:  
+If the expression is numeric, the value is shown from the right margin of the display. If it is 
+a string, it is shown from the left margin of the display.  
+
+10 WAIT
+15 PRINT 1234   
+20 PRINT "ABCD"
+</PRE>
+<TABLE>
+<TR><TD WIDTH="50"><BR></TD>
+<TD>
+<TABLE BORDER=1>
+<TR><TD WIDTH="200" ALIGN="RIGHT">1234.
+ <TABLE>
+  <TR><TD WIDTH="200">ABCD</TD></TR>
+ </TABLE>
+</TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<PRE>
+2) For two or more items to be displayed (specified with commas or semicolon): 
+Format 1,2 display the data continuously from the left margin of the display.  
+
+10 A=1234
+15 C$="ABCDE"
+20 WAIT
+25 PRINT"A=",A 
+30 PRINT A,C$
+</PRE>
+<TABLE>
+<TR><TD WIDTH="50"><BR></TD>
+<TD>
+<TABLE BORDER=1>
+<TR><TD WIDTH="200" ALIGN="LEFT">A= 1234.<BR>1234.ABCDE</TD></TR>
+</TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<PRE>
+
+10 A=1234
+15 C$="ABCDE"
+20 WAIT
+25 PRINT "A=";A
+30 PRINT "EFGH"; C$; A
+</PRE>
+<TABLE>
+<TR><TD WIDTH="50"><BR></TD>
+<TD>
+<TABLE BORDER=1>
+<TR><TD WIDTH="200" ALIGN="LEFT">A= 1234.<BR>EFGHABCDE1234.</TD></TR>
+</TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<PRE>
+
+Format 3 displays the data by following the specified format. 
+Refer to the USING command for USING format. Commas (,) and semicolons (;) will be
+treated as usual. A USING statement can be used only once in one PRINT statement. 
+
+<I><B>Example:</B></I>
+10 PRINT USING "&&&&&&&&";"ANSWER=";
+20 PRINT USING"####.##";5/9
+
+Format 4 scroll up 1 line. 
+
+<I><B>Example:</B></I>
+10 WAIT
+15 CLS
+20 FOR A=0 TO 159
+30 PRINT CHR$ (A+32);
+40 NEXT A
+50 WAIT
+60 PRINT
+
+The characters displayed between lines 20 and 40 will remain on the display at line 50.
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=pset>
+<H3>PSET</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>	1. PSET (expression 1, expression 2)
+         2. PSET (expression 1, expression 2), X
+
+<I><B>See Also:</B></I> PRESET, GCURSOR, POINT
+
+<I><B>PURPOSE:</B></I>
+Sets or clears a dot at the specified coordinates on the display.
+
+<I><B>REMARKS:</B></I>
+Format 1 sets the dot at the coordinates (expression 1, expression 2). 
+Format 2 clears the specified dot if it is set, and sets it if it is cleared.
+The values of expressions1 and 2 may be within the range of -32768 to 32767. A dot on the 
+display is addressed only if the value of expression 1 is 0 to 238 and that of expression 2 is 0 
+to 69.
+
+<I><B>EXAMPLE:</B></I>
+10 CLS 
+15 DEGREE
+20 FOR A=0 TO 600 STEP 3
+30 B=-1* SIN A
+40 Y=INT (B*16)+16
+50 X=INT (A/4)
+60 PSET (X,Y)
+70 NEXT A
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=radian>
+<H3>RADIAN</H3>
+</A>
+<PRE>
+<I><B>FROMAT:</B></I> RADIAN
+
+<I><B>See Also:</B></I> DEGREE, GRAD
+
+<I><B>PURPOSE:</B></I> 
+Changes the from of angular values to radians.
+
+<I><B>REMARKS:</B></I>
+The device has three forms for representing angular values-degrees, radians, and 
+gradient. These forms are used in specifying the arguments to the SIN, COS and TAN 
+functions and in returning the results from the ASN, ACS, and ATN functions.
+
+The RADIAN function changes the form of all angular values to radian form until DEGREE 
+or GRAD is used. Radian form represents angles in terms of the length of the arc with 
+respect to the radius, i.e., 360 degree is 2*pi radians, since the circumference of a circle is 
+2*pi times the radius.
+At the beginning of a program the form of angular values to decimal degrees(DEGREE).
+
+<I><B>EXAMPLE:</B></I>
+10 RADIAN  
+15 WAIT
+20 X=ASN 1  
+30 PRINT X
+
+X now has value of 1.570796327 or pi / 2, the arc sine of 1.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=randomize>
+<H3>RANDOMIZE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> RANDOMIZE
+
+<I><B>See Also:</B></I> RND
+
+<I><B>PURPOSE:</B></I>
+Resets the seed for random number generation.
+
+<I><B>REMARKS:</B></I>
+When random numbers are generated using the RND function, the device begins with a 
+predetermined "seed" or starting number. RANDOMIZE resets this seed to a new randomly 
+determined value.  
+
+The starting seed will be the same each time the device is turned on, so the sequence of 
+random numbers generated with RND is the same each time, unless the seed is changed. 
+This is very convenient during the development of a program because it means that the 
+behavior of the program should be the same each time it is run, even though it includes a 
+RND function. When you want the numbers to be truly random, the RANDOMIZE statement 
+can be used to make the seed itself random.
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 RANDOMIZE
+30 X=RND 20
+40 PRINT X
+
+Without 20 line, the value of X is based on the standard seed when executing 30 lines. 
+If there are 20 line or over, a new seed is used.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=read>
+<H3>READ</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> READ variable [, variable ...]
+
+<I><B>See Also:</B></I> DATA, RESTORE
+
+<I><B>PURPOSE:</B></I>
+Reads values from a DATA statement and assigns them to variables.
+
+<I><B>REMARKS:</B></I>
+When assigning initial values to an array, it is convenient to list the values in a DATA 
+statement and use a READ statement in a FOR...NEXT loop to load the values into the 
+array. When the first READ is executed, the first value in the first DATA statement is returned. 
+Succeeding READs use succeeding values in the order in which they appear in the program, 
+regardless of how many values are listed in each DATA statement or how many DATA 
+statements are used.
+
+if desired, the values in a DATA statement can be read a second time using the RESTORE 
+statement.
+
+Note:
+The type of data must match the type of variables (numerical or string) to which it is to be 
+assigned.
+
+<I><B>EXAMPLE:</B></I>
+ 10 DIM B(10)
+ 20 WAIT
+ 30 FOR I= 1 TO 10
+ 40 READ B (I)
+ 50 PRINT B(I)*2;
+ 60 NEXT I
+ 70 DATA 10,20,30,40,50,60
+ 80 DATA 70,80,90,100
+ 90 READ C,D,E$,F$
+100 PRINT C,D,E$,F$
+110 DATA 3,5,G=,H=
+120 END
+
+[10] Set up an array.
+[40] Loads the values from the first DATA statements into B( ). B(1) is 10, B(2) is 20, B(3) is 30,etc.
+[90] Loads the values from the final DATA statement.C is 3, D is 5, E$ is G=, F$ is H=.
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=rem>
+<H3>REM(')</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>  REM remark  or  'remark
+
+<I><B>PURPOSE:</B></I>
+Includes comments in a program.
+
+<I><B>REMARKS:</B></I>
+It is often useful to include explanatory comments in a program. These can provide titles, 
+names of authors, dates of last modification, usage notes, reminders about algorithms, etc. 
+These comments are included using the REM (or apostrophe ('))statement.
+
+The REM (') statement has no effect on program execution and can be included anywhere in 
+the program. Everything following REM (') in that line is treated as a comment.
+
+<I><B>EXAMPLE:</B></I>
+ 10 'THIS LINE HAS NO EFFECT
+100 REM THIS LINE HAS NO EFFECT EITHER. 
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=restore>
+<H3>RESTORE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>
+1. RESTORE   line number
+             *label
+2. RESTORE
+
+<I><B>See Also:</B></I> DATA, READ
+
+<I><B>PURPOSE:</B></I>
+Rereads values in a DATA statement or changes the order in which these values are read.
+
+<I><B>REMARKS:</B></I>
+In the regular use of READ the device begins reading with the first value in a DATA 
+statement and proceeds sequentially through the remaining values.Format 1 resets the 
+pointer to the first value of the DATA statement whose line number is equal to the specified 
+line number or *label. Format 2 resets the pointer to the first value of the first DATA 
+statement, so that it an be read again.
+
+<I><B>EXAMPLE:</B></I>
+10 DIM B(10)
+20 WAIT
+30 FOR I=1 TO 10
+40 RESTORE
+50 READ B(I)
+60 PRINT B(I)*I;
+70 NEXT I
+80 DATA 20
+90 END
+
+[10] Sets up an array.
+[50] Assigns the value 20 to each of the elements of B( ).
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=rightd>
+<H3>RIGHT$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> RIGHT$("string", expression)
+
+<I><B>See Also:</B></I> LEFT$, MID$
+
+<I><B>PURPOSE:</B></I>
+Returns the specified number of characters from the right end of a string.
+
+<I><B>REMARKS:</B></I>
+Fractions will be truncated. If the expression is less than 1, a null string is returned. 
+If the expression is greater than the number of characters in the string, the whole string 
+is returned.
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 XX$= "SHARP COMPUTER"
+30 FOR N=1 TO 14  
+40 SS$=RIGHT$(XX$,N)
+50 PRINT SS$
+60 NEXT N
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=rnd>
+<H3>RND</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> RND numeric expression
+
+<I><B>See Also:</B></I> RANDOMIZE
+
+<I><B>PURPOSE:</B></I>
+Generates a random number.  
+
+<I><B>REMARKS:</B></I>
+If the value of the expression is less than 2 but greater than or equal to zero, the random 
+number is less than 1 and greater than zero. If the expression is an integer greater than or 
+equal to 2, the result is a random number greater than or equal to 1 and less than or equal to 
+the expression. If the expression is greater than or equal to 2 and not an integer, the result is 
+a random number greater than or equal to 1 and less than or equal to the smallest integer 
+that is larger than the expression. (In this case, the generation of the random number 
+changes depending on the value of the decimal portion of the argument.) If the expression is 
+negative, the previously set numeric expression is used to generate the random number.
+
+
+                                                       Result
+         Argument                         Lower Bound       Upper Bound
+             .5					0<		< 1
+            2					1		  2
+            2.5					1		  3
+
+
+The same sequence of random numbers is normally generated because the same "seed" is 
+used each time the device is turned on. To randomize the seed, see the RANDOMIZE 
+command.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=strd>
+<H3>STR$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> STR$ expression
+
+<I><B>See Also:</B></I> VAL
+
+<I><B>PURPOSE:</B></I> 
+Converts numeric data into string data.
+
+<I><B>REMARKS:</B></I> 
+The STR$ function changes numeric data to a string. The string will be composed of the 
+same digits as the original number. The STR$ function has the opposite effect of the VAL 
+function.
+
+If the numeric data is negative, the string will be preceded by a minus (-) sign.
+
+<I><B>EXAMPLE:</B></I>
+:
+:
+110 N=N*3
+120 A$=STR$ N
+130 B$=LEFT$(A$,3)
+140 M=VAL B$
+:
+
+[110] Program performs calculation on numeric variable N.
+[120] The numeric variable N is converted to the string Variable A$. String variables are easier to 
+      manipulate than numerics. In this example, suppose that the first 3 digits of the number are required. 
+      Having converted the number to a string, we can use any of the string manipulation commands: 
+      LEFT$, RIGHT$, MID$.
+[130] Stores only the first 3 digits(characters)of the number into string variable B$.
+[140] The first 3 digits are reconverted into a numeric variable for processing by the program as a number.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=timed>
+<H3>TIME$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> TIME$
+
+<I><B>See Also:</B></I> DATE$
+
+<I><B>PURPOSE:</B></I> 
+Returns the time of System Clock.
+
+<I><B>REMARKS:</B></I> 
+Returns the date as "HH:MM".(Hour: Minute)
+For example.
+	"00:01"	(If it is 12:01 AM)
+	"23:59"	(If it is 11:59 PM)
+Although you can switch between 12- and 24-hour systems to display the
+time in the clock application, it is always displayed in the 24-hour
+system in this function.
+
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 PRINT "It's"; TIME$; "now"
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=using>
+<H3>USING</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1.USING format string
+         2.USING
+
+<I><B>See Also:</B></I> PRINT
+
+<I><B>PURPOSE:</B></I>
+Controls the format of displayed or printed output.
+
+<I><B>REMARKS:</B></I>
+USING can be used by itself or as a clause within a PRINT statement. When the USING 
+command is used in a PRINT statement, it is valid only for the values or strings output by 
+that statement. If it is used independently (on an independent line), it is valid for all the 
+subsequent PRINT commands. USING establishes a specified format for output that is used 
+for all output that follows until changed by another USING.
+
+#:	Right justified numeric field character.
+	Length of integer field: 2 to 11(including sign)
+	If a value is shorter than the specified numeric field, the extra portion of the field is 
+	filled with spaces.
+	If a numeric field with a length of 12 or more digits is specified, it is regarded to be 
+	11 digits long.
+	Length of decimal field: 0 to 10 (0 to 9 for exponential numbers)
+	If a value is shorter than the specified field, zeros appear in the extra portion of the 
+	field. If the former is longer than the latter, the extra digits are truncated.
+	Use it at the same time using DECIMAL POINT. If there is no DECIMAL POINT, a position
+        of the display is displaced.
+
+	If a value is longer than the specified field, it becomes an error.
+	Therefore to check a value before display is desirable.
+
+.:	Decimal point(delimiter for integer and decimal parts)
+,:	Used as a 3-digit separator in numeric fields.
+	To separate every 3 digits of integer field with commas (,), place a comma in or at 
+	the end of the integer field.
+^:	Used to indicate that numbers should be displayed in scientific notation.
+	With this notation, the length of the mantissa field is always 2(1 digit and the sign), 
+	without regard to the specified length of the integer field. If the given length of the 
+	decimal field is 9 or more digits, the length of the decimal field of the mantissa is 
+	also 9 digits.
+&:	Left justified alphanumeric field
+	If a string is shorter than the specified field, spaces appear in the extra portion of 
+	the field. If the former is longer than the latter, the extra characters are dropped.
+
+(1) USING"###."
+    Prints the sign, 2 integer digits, and a decimal point.
+(2) USING"###.##"
+    Prints the sign, 2 integer digits, a decimal point, and 2 decimal places.
+(3) USING"###,###."
+    Prints the sign, 4 integer digits, a 3-digit separator (,) and a decimal point.
+    For numerical data, 3-digit separator (,) is counted as a digit. So if you want to print a 
+    number "-1,234,567.", you have to use ten field characters (#), such as USING 
+    "#######,###.".
+(4) USING"##.##^"
+    Prints numerical data in exponential from with up to 2 decimal places.
+    Spaces for 1 integer digit and the sign are automatically reserved for the mantissa, and 
+    for 2 integer digits, the capital E, and the sign for the exponent.
+    Note: ^ and comma(,) may not be used concurrently.
+(5) USING"&&&&&&"
+    Prints a string of 6 characters.
+(6) USING
+    Format 2 clears formatting.
+
+Formatting is also cleared by executing the PROGRAM, or turning the organizer off and
+then on.
+
+<I><B>EXAMPLE:</B></I>
+10 C=10.7703
+15 WAIT
+20 PRINT USING"###.###";C
+
+<B>Supplement:</B>
+A program which simultaneously outputs numerical and string characters written for other 
+computers should be modified as follows:
+
+PRINT USING"####.##";H;"(m)"
+
+       To
+
+PRINT USING"####.##";H;
+PRINT"(m)"
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=val>
+<H3>VAL</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> VAL string
+
+<I><B>See Also:</B></I> STR$
+
+<I><B>PURPOSE:</B></I>
+Converts a string of numeric characters into a decimal value.
+
+<I><B>REMARKS:</B></I>
+The VAL function converts a character string, which may include the hex number designator 
+(&H), numbers (0-9), a sign (+,-), and exponential symbols(E), into a numeric value.
+
+If the string is in decimal notation, it must be composed of the characters 0 to 9, with an 
+optional decimal point and sign. In this form, VAL is the opposite of the STR$ function.
+
+If illegal characters are included, conversion is performed up to the first occurrence of an 
+illegal character.
+
+Control codes (&H00 to &H1F) cannot be used.
+
+<I><B>EXAMPLE:</B></I>
+A=VAL"-120"	Assigns -120 to variable A.
+B=VAL"3.2*4="	Assigns 3.2 to variable B.
+C=VAL"&H64"	Assigns 100 to variable C.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+
+<HR>
+<A NAME=ver>
+<H3>VER</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> VER
+
+<I><B>PURPOSE:</B></I>
+Gives the specified variable the value of the version number of BASIC interpreter.
+
+<I><B>REMARKS:</B></I>
+VER is used to respond to the version number of BASIC interpreter.
+Value of VER does not have a direct relation with version number of Organizer.
+Do not use VER in statement directly. Please be sure to let it into the variable at first.
+
+<I><B>EXAMPLE:</B></I>
+10 A=VER
+20 WAIT
+30 PRINT "VERSION=";A
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+
+<HR>
+<A NAME=xor>
+<H3>XOR --- Exclusive or</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>  Expression XOR expression
+           Conditional expression XOR conditional expression
+
+<I><B>See Also:</B></I> AND, OR, NOT, IF
+
+<I><B>PURPOSE:</B></I>
+ Finds out an exclusive logical addition between an expression
+and another.
+
+<I><B>REMARKS:</B></I>
+ * Values of exclusive logical additions are as follows in digital numbers:
+1 XOR 1=0    
+1 XOR 0=1
+0 XOR 1=1
+0 XOR 0=0
+
+Even when finding exclusive logical additions in decimal numbers, the
+decimal numbers are converted into digital ones to find exclusive logical
+addition of each digit and then the results are turned back to be
+in decimal numbers. For example, the exclusive logical addition between
+41 and 27 is calculated as follows:
+
+<I><B>EXAMPLE:</B></I>
+41 XOR 27=50
+
+41 and 27 are converted into digital numbers(101001 and 011011) and XOR in each digit is
+taken off. Then the result(110010) is converted back to be in decimal number which is 50.
+* Integral parts of the values ranging from -32,768 to +32,767 in the
+expression are effective.
+* Conditions to satisfy add numbers among two or more conditions are 
+written as one expression.
+(Example) 50 IF A&gt;5 XOR B&gt;=4 THEN...
+If one or the other of A&gt;5 and B&gt;=4 is satisfied,  it executes a command
+following THEN.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+</BODY>
+</HTML>

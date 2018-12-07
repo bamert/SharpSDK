@@ -1,0 +1,173 @@
+<HTML>
+<HEAD>
+<TITLE>
+ERROR MESSAGES
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<CENTER><H2>ERROR MESSAGES</H2></CENTER>
+
+<PRE>
+When an error occurs, one of the error messages listed below will be displayed.
+For errors which occur during program execution, the error message is followed by the line 
+number in which the error occurred. The error number and the line number are stored into 
+the variables ERN and ERL, respectively.
+</PRE>
+
+<A HREF="Help.html#Main">Return to Help TOP</A><p>
+
+<TABLE BORDER=1>
+<TR><TH>Error message</TH><TH>Error No.</TH><TH>Meaning</TH></TR>
+<TR><TD>Syntax error</TD><TD>10</TD><TD>
+Invalid expressions or statements have been used.
+</TD>
+</TR>
+
+<TR><TD>Mode error</TD><TD>12</TD><TD>
+The mode selection in the OPEN statement was incorrect.
+</TD>
+</TR>
+
+<TR><TD>Overflow</TD><TD>20</TD><TD>
+The calculated result exceeds the calculation range.
+</TD>
+</TR>
+
+<TR><TD>Division by Zero</TD><TD>21</TD><TD>
+An attempt was made to divide by zero.
+</TD>
+</TR>
+
+<TR><TD>Illegal function call</TD><TD>22</TD><TD>
+Illegal operation was attempted.
+</TD>
+</TR>
+
+<TR><TD>Duplicate Definition</TD><TD>30</TD><TD>
+An attempt was made to declare an array variable name which 
+is already declared.
+</TD>
+</TR>
+
+<TR><TD>Array specified without DIM</TD><TD>31</TD><TD>
+The array variable name was specified without the DIM 
+statement.
+</TD>
+</TR>
+
+<TR><TD>Subscript out of range</TD><TD>32</TD><TD>
+Array was addressed illegally(array subscript exceeds the size 
+of the array specified in the DIM statement)
+</TD>
+</TR>
+
+<TR><TD>Data out of range</TD><TD>33</TD><TD>
+The specified value exceeds the allowable range.
+</TD>
+</TR>
+
+<TR><TD>GOSUB or FOR nesting exceeded</TD><TD>50</TD><TD>
+The levels of nesting in the GOSUB or FOR statement exceeds 
+the allowable range.
+</TD>
+</TR>
+
+<TR><TD>RETURN without GOSUB</TD><TD>51</TD><TD>
+An attempt was made to execute the RETURN statement 
+without calling the subroutine.
+</TD>
+</TR>
+
+<TR><TD>NEXT without FOR</TD><TD>52</TD><TD>
+The FOR statement is missing for the NEXT statement.
+</TD>
+</TR>
+
+<TR><TD>Out of data</TD><TD>53</TD><TD>
+The DATA statement is missing for the READ statement.
+</TD>
+</TR>
+
+<TR><TD>Buffer space exceeded</TD><TD>54</TD><TD>
+The size of the BASIC interpreter exceeds the available work area.
+</TD>
+</TR>
+
+<TR><TD>String too long</TD><TD>55</TD><TD>
+The length of the entered string exceeds 255 bytes.
+</TD>
+</TR>
+
+<TR><TD>RESUME without error</TD><TD>57</TD><TD>
+An attempt was made to execute the RESUME statement 
+during non-error processing.
+</TD>
+</TR>
+
+<TR><TD>Out of memory</TD><TD>60</TD><TD>
+The size of program or variable exceeds the memory capacity.
+</TD>
+</TR>
+
+<TR><TD>Can't print in specified format</TD><TD>70</TD><TD>
+Characters cannot be printed in the format specified in the 
+USING statement.
+</TD>
+</TR>
+
+<TR><TD>USING format error</TD><TD>71</TD><TD>
+The format specified in the USING statement is illegal.
+</TD>
+</TR>
+
+<TR><TD>Bad drive name</TD><TD>75</TD><TD>
+The specified drive name is illegal.
+</TD>
+</TR>
+
+<TR><TD>Disk full</TD><TD>77</TD><TD>
+No further memory storage available, or the size of files exceeds the limit.
+</TD>
+</TR>
+
+<TR><TD>File not open</TD><TD>85</TD><TD>
+The file has not been opened.
+</TD>
+</TR>
+
+<TR><TD>File already open</TD><TD>86</TD><TD>
+The file has already been opened.
+</TD>
+</TR>
+
+<TR><TD>Input past end</TD><TD>87</TD><TD>
+An attempt was made to read data past the end of file.
+</TD>
+</TR>
+
+<TR><TD>Type mismatch</TD><TD>90</TD><TD>
+The type of the specified data does not match.
+</TD>
+</TR>
+
+<TR><TD>File not found</TD><TD>94</TD><TD>
+The specified file does not exist.
+</TD>
+</TR>
+
+<TR><TD>Bad file name</TD><TD>95</TD><TD>
+The specified file name is illegal.
+</TD>
+</TR>
+
+<TR><TD>Low Battery error</TD><TD>100</TD><TD>
+Can not Operate in Low Battery.
+</TD>
+</TR>
+
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,229 @@
+<HTML>
+
+<HEAD>
+<TITLE>Instruction Manual for BASIC SDK</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><H2>Instruction Manual for BASIC SDK</H2></CENTER>
+
+<H3>Before to Use</H3>
+<PRE>
+ This product is a software to create a program using BASIC language of OZ/ZQ700 
+Series electronic organizer. The software includes:
+ - Basic SDK
+ - Basic SDK Read Me
+ - Instruction Manual for BASIC SDK (This file)
+ - Help Files
+   - BASIC COMMAND DICTIONARY
+   - SCIENTIFIC&MATHEMATICAL CALCULATIONS
+   - BASIC COMPOSITION
+   - BASIC VARIABLE
+   - Entering Numeric and Characters
+   - Priority of Calculation
+   - FILE Commands
+   - ERROR MESSAGES
+   - CHARACTER CODE TABLE
+
+It is also required that Downloader for SHARP Electronic Organizer V2.X to be 
+installed to download the created program to the OZ/ZQ700 Series electronic 
+organizer.
+
+</PRE>
+<H3>To start</H3>
+Click 'Basic SDK' from Sharp BASIC SDK in Start menu.
+
+<H3>Summary</H3>
+<PRE>
+The following steps are required before the program created using the SDK to be run 
+on the OZ/ZQ700 Series electronic organizer:<p>
+
+1.<A HREF="#Project">Make a project.</A><p>
+2.<A HREF="#Basic">Create a BASIC program.</A><p>
+3.<A HREF="#Compile">Compile it.</A>
+   (Object file is created.)<p>
+4.<A HREF="#Wzd">Convert it to a file to download (a WZD file).</A>
+   (You need to enter required information in order to convert.)<p>
+5.<A HREF="#Download">Start the Downloader on the SDK to download it to the OZ/ZQ700 Series electronic organizer.</A><p>
+6.<A HREF="#Debug">Check how it works on the OZ/ZQ700 Series electronic organizer unit.</A>
+   Repeat the process from the step 2 above until the program is completed.<p>
+</PRE>
+
+<H3>How to use</H3>
+<A NAME=Project><H4>
+1. Make a project.
+</H4></A>
+<PRE>
+A project needs to be made in order to create a BASIC program. Once a project is 
+made, an editor opens to type in a BASIC program. 
+
+- There is no particular restriction on project names.
+- It is limited for one BASIC program to be created on a project. 
+- You cannot open two or more projects at the same time.
+
+If you want to make a new program, please be sure to use "Project New",
+not to use"SAVE AS".
+
+</PRE>  
+<A NAME=Basic><H4>
+2. Create a BASIC program.
+</H4></A>
+<PRE>
+Enter a program according to the specification of the BASIC for the OZ/ZQ700.
+
+- Basically enter in a form like "the line number" + "command".
+- Number lines in ascending order.
+- The same line number can not be used. (Error occurred)
+- See Help Files.
+
+This SDK allows the use of long variable identifiers to make programming efficiently 
+while the BASIC for the OZ/ZQ700 does not allow long variable identifiers with 3 
+characters and over. (The long variable identifiers will be converted to those with 2 
+characters automatically when compiled. )
+
+See <A HREF="#Long">To Use Long Variable Identifiers</A> below.
+
+</PRE> 
+<A NAME=Compile><H4>
+3. Compile it.
+</H4></A>
+<PRE>
+Select Compile on Build menu to compile the created BASIC program. If error occurs, 
+the error message and line number are shown in an error window at the bottom. If 
+comple ends correctly, a message as below will appear in the error window:
+Done. 0 error(s)
+xxxx(project name).obj was created.(xxxx bytes)
+
+Basically, it only converts the program so that not all errors are checked. It must be 
+checked if it works well after actually downloaded to the OZ/ZQ700 Series electronic 
+organizer.
+  
+<B>Notes</B>
+- Although REM or (') can be used as a remark command in the program, they are cut 
+out when the program is compiled because they are ignored when it is executed.
+- If there are two or more labels with the same name in the program, the first one to be 
+found will be effective. (Up to 16 characters are recognized.)
+
+Major error messages and their reasons
+<B>Illegal line number</B>
+ - The line number is not in the range from 10 to 30000.
+ - The line numbers become smaller from some point.
+   (Number lines in ascending order)
+ - There are the same line numbers.
+
+<B>Illegal label</B>
+ - Something wrong with a * label (i.e. starting with a number, having a symbol, starting 
+   with a reservation word, etc.).
+
+<B>Line buffer overflow</B>
+ - One line exceeded 255 byte (after being compiled).
+
+<B>Syntax error</B>
+ - Other errors (such as no line number at the top, not enclosed with ", no line number 
+   on GOTO, etc.).
+
+<B>Undefined label</B>
+ - There is no label to jump to (i.e. GOTO, GOSUB and so on.)
+
+<B>Object file size over</B>
+ - A program size exceeded 32,687 byte. (There may be cases some addition can be 
+   made to a line on the way even if this message appears.)
+
+<B>What are not or cannot be checked</B>
+ - What cannot be found without actually running the program.
+     - The maximum number of steps of GOSUB~RETURN or FOR~NEXT.
+     - Unsecured tactic variables.
+     - Exceeded memory for variables being used.
+ - Checking the range of parameter and integrity of each statement.
+
+</PRE>
+<A NAME=Wzd><H4>
+4. Create a WZD file. (Make WZD)
+</H4></A>
+<PRE>
+Select Make WZD on Build menu to create a WZD file which can be downloaded. If it is 
+grayed out, select WZD Setting on Build menu to provide the following necessary 
+information for WZD file creation:
+
+ - Title: The title to be shown on the OZ/ZQ700. Max. 19 characters.
+ - Description: "Summarized explanations" to be shown in the downloader. It will not be 
+   downloaded to the OZ/ZQ700 Series electronic organizer.
+
+No error message will appear here and the file will be created without fail.
+
+</PRE>
+<A NAME=Download><H4>
+5. Download.
+</H4></A>
+<PRE>
+Now you only have to download the program. Select Download on Build menu to 
+designate the current WZD file and start the Downloader. Then connect the 
+Downloader to the OZ/ZQ700 Series electronic organizer and press LOAD button on 
+it to download. 
+
+Make sure that "Downloader for SHARP Electronic Organizer V2.X is installed in your 
+PC.
+
+</PRE>   
+<A NAME=Debug><H4>
+6. Check how the program works and debug it.
+</H4></A>
+<PRE>
+After download is completed, run the program on the OZ/ZQ700 Series electronic 
+organizer unit to check how it works. In order to debug, insert lines to display variables 
+just for the purpose because you can neither execute the program step by step nor 
+trace it on the unit. 
+
+When you find errors on the program, return to the step 2 above to create and 
+download a WZD file again.
+
+- When you download a program (a WZD file) of the same project again, make sure to 
+ delete the existing program on the OZ/ZQ700 Series electronic organizer before doing 
+ so. If not deleted, an error message saying that there are identical programs will 
+ appear and the program will not be downloaded.
+
+
+</PRE>
+
+<A NAME=Long><B>To Use Long Variable Identifiers</B></A>
+<PRE>
+ Although the OZ/ZQ700 Series electronic organizer only recognizes variable 
+identifiers with two or less characters, you may want to name variables with some 
+meanings when you create a program. This SDK has a variable conversion function to 
+convert variables so that you can use long variable identifiers while programming. 
+
+The variable conversion function converts the long variable identifiers which have 
+been defined in advance into those with two characters starting with a letter Z (a total 
+of 36 variable identifiers from Z0 to Z9 and from ZA to ZZ) when the program is 
+compiled.
+ 
+Therefore, you can use up to 36 variable identifiers for each kind of variables (such as 
+numeric variable, string variable, array numeric variable and array string variable). 
+
+ - Do not use any variable starting with a letter Z when you use the function.
+ - Characters which can be used for the long variable identifiers are alpha-numerics.
+ - The variables are not case sensitive as on normal variables. (In other words, upper 
+   and lower-case letters are treated as the same.)
+ - Once defined, even short variable identifiers will be converted. 
+   Define a: A variable "a" will be converted.
+
+It is simple to use. Just list variable identifiers after Define at the first line of the 
+program without a line number.
+
+<B>&lt;Example of the Use&gt;</B>
+To define Flag, Name$ and Area(). (Area() is an array variable.)
+
+Define Flag,Name$,Area()
+
+Describe aligned variables like Glay() and Larc$().
+
+</PRE>
+<B>Other</B>
+<PRE>
+When open a project by designating a BAS file but the project does not exist, the BAS 
+file will be read in and a project will be newly created. 
+</PRE>
+</BODY>
+</HTML>
+
+

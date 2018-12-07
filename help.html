@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//HTML 3.2 final//EN">
+<HTML>
+<HEAD>
+<TITLE>
+BASIC SDK Help
+</TITLE>
+</HEAD>
+<BODY>
+
+<A NAME=Main></A>
+
+<CENTER><H2>BASIC SDK Help</H2></CENTER>
+<HR>
+<H3>INDEX</H3>
+<LI><A HREF="#Command">BASIC COMMAND DICTIONARY</A><p>
+
+<LI><A HREF="Function.html">SCIENTIFIC&MATHEMATICAL CALCULATIONS</A><p>
+
+<LI><A HREF="#Compo">BASIC COMPOSITION</A><p>
+
+<LI><A HREF="#Var">BASIC VARIABLE</A><p>
+
+<LI><A HREF="#Num">Entering Numeric and Characters</A><p>
+
+<LI><A HREF="#Prio">Priority of Calculation</A><p>
+
+<LI><A HREF="#File">FILE Commands</A><p>
+
+<LI><A HREF="Error.html">ERROR MESSAGES</A><p>
+
+<LI><A HREF="#Font">CHARACTER CODE TABLE</A><p>
+
+<p>
+<BR>
+<p>
+<HR>
+<A NAME=Command></A>
+<H2>BASIC COMMAND DICTIONARY</H2>
+<PRE>
+The following pages contain an alphabetic listing of the BASIC commands that you can use 
+on the device.
+
+For simplicity, the following conventions have been adopted in compiling this dictionary:
+</PRE>
+<TABLE>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">expression</TH>
+    <TD>Indicates a numeric value, numerical variable or a formula including<BR>
+        numeric values and numerical variables.</TD></TR>
+
+<TR><TH ALIGN="LEFT">variable</TH>
+    <TD>Indicates a numerical variable or string variable including array variables.</TD></TR>
+
+<TR><TH ALIGN="LEFT">"string"</TH>
+    <TD>Indicates a character string enclosed in quotation marks.</TD></TR>
+
+<TR><TH ALIGN="LEFT">string variable</TH>
+    <TD>Indicates a string variable or string array variable.</TD></TR>
+
+<TR><TH ALIGN="LEFT">Line number</TH>
+    <TD>Indicates a line number (10-30000)</TD></TR>
+
+<TR><TH ALIGN="LEFT">*label</TH><TD>Indicates  *label.</TD></TR>
+
+<TR><TH ALIGN="LEFT" VALIGN="TOP">d:</TH><TD>Indicates a device name.<BR>
+               The following are device names used on the device:<BR>
+               <DD>E:FLASH disk E:<BR>
+               <DD>COM:Serial I/O device</TD></TR>
+
+<TR><TH ALIGN="LEFT" VALIGN="TOP">[  ]</TH>
+    <TD>The parameter in square brackets is optional. The brackets themselves<BR>
+        are not part of the command entry.</TD></TR>
+
+<TR><TH ALIGN="LEFT" VALIGN="TOP">(  )</TH>
+    <TD>Used to enclose parameter values in certain commands. They should be<BR>
+        entered as part of the command.</TD></TR>
+
+<TR><TH ALIGN="LEFT">"  "</TH><TD>Used to enclose string parameter values in certain commands.</TD></TR>
+
+<TR><TH ALIGN="LEFT">A<BR>B</TH><TD>A or B can be selected.</TD></TR>
+</TABLE>
+<p>
+
+<HR>
+<A NAME=Top></A>
+<PRE>
+<H3>INDEX of Commands</H3>
+
+<A HREF="Command_1.html#and">AND</A> <A HREF="Command_1.html#asc">ASC</A><BR> 
+<A HREF="Command_1.html#beep">BEEP</A><BR>
+<A HREF="Command_1.html#chrd">CHR$</A> <A HREF="Command_1.html#circle">CIRCLE</A> <A HREF="Command_1.html#clear">CLEAR</A> <A HREF="Command_1.html#cls">CLS</A><BR>
+<A HREF="Command_hi.html#data">DATA</A> <A HREF="Command_1.html#dated">DATE$</A> <A HREF="Command_1.html#degree">DEGREE</A> <A HREF="Command_1.html#dim">DIM</A><BR>
+<A HREF="Command_1.html#end">END</A> <A HREF="Command_hi.html#erase">ERASE</A> <BR>
+<A HREF="Command_hi.html#for">FOR...NEXT</A><BR>
+<A HREF="Command_1.html#gcursor">GCURSOR</A> <A HREF="Command_1.html#glen">GLEN</A> <A HREF="Command_hi.html#gosub">GOSUB...RETURN</A> <A HREF="Command_2.html#goto">GOTO</A> <A HREF="Command_2.html#gprint">GPRINT</A> <A HREF="Command_2.html#grad">GRAD</A><BR>
+<A HREF="Command_2.html#hexd">HEX$</A><BR>
+<A HREF="Command_hi.html#if">IF...THEN...ELSE</A> <A HREF="Command_2.html#inkeyd">INKEY$</A> <A HREF="Command_2.html#input">INPUT</A><BR>
+<A HREF="Command_2.html#leftd">LEFT$</A> <A HREF="Command_2.html#len">LEN</A> <A HREF="Command_2.html#let">LET</A> <A HREF="Command_2.html#line">LINE</A> <A HREF="Command_2.html#locate">LOCATE</A><BR>
+<A HREF="Command_2.html#mdf">MDF</A> <A HREF="Command_2.html#midd">MID$</A><BR>
+<A HREF="Command_2.html#not">NOT</A><BR>
+<A HREF="Command_3.html#ongosub">ON...GOSUB</A> <A HREF="Command_3.html#ongoto">ON...GOTO</A> <A HREF="Command_3.html#or">OR</A><BR>
+<A HREF="Command_hi.html#paint">PAINT</A> <A HREF="Command_3.html#point">POINT</A> <A HREF="Command_3.html#preset">PRESET</A> <A HREF="Command_3.html#print">PRINT</A> <A HREF="Command_3.html#pset">PSET</A><BR>
+<A HREF="Command_3.html#radian">RADIAN</A> <A HREF="Command_3.html#randomize">RANDOMIZE</A> <A HREF="Command_3.html#read">READ</A> <A HREF="Command_3.html#rem">REM(')</A> <A HREF="Command_3.html#restore">RESTORE</A> <A HREF="Command_3.html#rightd">RIGHT$</A> <A HREF="Command_3.html#rnd">RND</A><BR>
+<A HREF="Command_hi.html#stop">STOP</A> <A HREF="Command_3.html#strd">STR$</A><BR>
+<A HREF="Command_3.html#timed">TIME$</A><BR>
+<A HREF="Command_3.html#using">USING</A><BR>
+<A HREF="Command_3.html#val">VAL</A><BR>
+<A HREF="Command_3.html#ver">VER</A><BR>
+<A HREF="Command_hi.html#wait">WAIT</A><BR>
+<A HREF="Command_3.html#xor">XOR</A><BR>
+<p>
+
+<B>Data File Access Commands</B><BR>
+<A HREF="Command_hi.html#close">CLOSE</A><BR>
+<A HREF="Command_hi.html#eof">EOF</A><BR>
+<A HREF="Command_hi.html#fre">FRE</A> <BR>
+<A HREF="Command_hi.html#inputs">INPUT#</A><BR>
+<A HREF="Command_hi.html#kill">KILL</A><BR>
+<A HREF="Command_hi.html#lof">LOF</A><BR>
+<A HREF="Command_hi.html#open">OPEN</A><BR>
+<A HREF="Command_hi.html#prints">PRINT#</A><p>
+
+
+<B>Error Trap Commands</B><BR>
+<A HREF="Command_hi.html#erl">ERL</A><BR>
+<A HREF="Command_hi.html#ern">ERN</A><BR>
+<A HREF="Command_hi.html#onerror">ON ERROR GOTO</A><BR>
+<A HREF="Command_hi.html#resume">RESUME</A><BR>
+<p>
+
+</PRE>
+
+<HR>
+<A NAME=Compo></A>
+<H2>BASIC COMPOSITION</H2>
+<PRE>
+BASIC PROGRAM is composed line.
+Line is as follow.
+    line number_[*label name:]Statement    (_ is space.)
+    line number : Indicates a line number (10-30000)
+    label name : Max character length is 16.
+    Statement : Command or expression.
+  Max line length is 255 characters.
+
+Multi Statement
+   line number_[*label name:]Statement[:Statement]    (_ is space.)
+	In some case, error will be occurred or error number message (error number or
+        error line number, or result of ERL/ERN function) is no correct in Multi Statement.
+        Please don't use Multi-statement in that case.
+
+</PRE>
+<HR>
+<A NAME=Var></A>
+<H2>BASIC VARIABLE</H2>
+<PRE>
+The kinds of variables as following.
+
+VARIABLE 
+</PRE>
+<TABLE>
+<TR><TD ALIGN="LEFT" VALIGN="TOP">NUMERIC VARIABLE:</TD>
+    <TD>NUMERIC SINGLE VARIABLE<BR>NUMERIC ARRAY VARIABLE</TD>
+    <TD>AB,BQ etc.<BR>AB(2,3) etc.</TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP">STRING VARIABLE:</TD>
+    <TD>STRING SINGLE VARIABLE<BR>STRING ARRAY VARIABLE</TD>
+    <TD>AB$,BQ$ etc.<BR>AB$(2,3) etc.</TD></TR>
+</TABLE>
+<PRE>
+
+The variable name consists of a letter and up to 2 alphanumeric characters. 
+For string variables, "$" is attached to the end of the variable name.
+String variable is 16 character length in default. To change length, refer "DIM" Command.
+Numerical array and string array variables are recognized as different arrays.
+At the beginning of a program whole variables are cleared.
+Refer "DIM" Command for array variable.
+
+
+</PRE>
+<HR>
+<A NAME=Num></A>
+<H2>Entering Numeric and Characters</H2>
+<PRE>
+Numeric entering
+  Normal numbers
+	plus	+0.000000001  -  +9999999999
+	minus	-0.000000001  -  -9999999999
+	ZERO	0
+ Exponent numbers
+	plus	+1E-99  -  +9.999999999E99  = +1*10<SUP>-99</SUP>  -  +9.999999999*10<SUP>99</SUP>
+	minus	-1E-99  -  -9.999999999E99  = -1*10<SUP>-99</SUP>  -  -9.999999999*10<SUP>99</SUP>
+ Hexadecimal numbers
+	& Hx  0 &lt;= x &lt;= 2540BE3FF
+Note  Hexadecimal numbers needs more time to execute than normal numbers,
+      Please use normal numbers in the program which needs speedy execution.
+
+STRINGS
+	"String"   : Chartacter length is 255.
+
+
+
+</PRE>
+<HR>
+<A NAME=Prio></A>
+<H2>Priority of Calculation</H2>
+<PRE>
+	1:PI 
+	2:FUNCTION
+	3:^ 
+	4:SIGN(+,-)
+	5:*,/
+	6:+,-
+	7:&gt;,&gt;=,&lt;,&lt;=,&lt;&gt;,=
+	8:AND,OR,XOR
+
+</PRE>
+<HR>
+<A NAME=File></A>
+<H2>FILE Commands</H2>
+<PRE>
+File can be used using with the commands as following.
+
+If the software version is the version that the VER function result is "49, 50", 
+there is the possibility that the file commands do not work correct.
+So please check the software version before using FILE commands like as shown in EXAMPLE, 
+and do not execute file command if the version is "49, 50".
+
+
+COMMANDS FOR FILE
+	OPEN/CLOSE/KILL/EOF/LOF/FRE/PRINT#/INPUT#
+
+<I><B>EXAMPLE:</B></I>
+	10 A=VER
+	20 IF (A<>49)*(A<>50) THEN 100
+	30 PRINT "This Program cannot be used this version software."
+	40 PRINT " Please use this program after system up-date."
+	50 WAIT
+	60 PRINT"(HIT ENTER KEY FOR EXIT)"
+	70 END
+	100 CLEAR
+	110 ...
+
+
+</PRE>
+<p>
+<BR>
+<p>
+<HR>
+<A NAME=Font></A>
+<H2>CHARACTER CODE TABLE</H2><BR>
+<img src="font.gif">
+
+
+</BODY>
+</HTML>

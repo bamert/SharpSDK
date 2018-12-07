@@ -1,0 +1,499 @@
+<HTML>
+<HEAD>
+<TITLE>
+BASIC COMMAND DICTIONARY
+</TITLE>
+</HEAD>
+<BODY>
+
+<A NAME=and>
+<H3>AND</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>	Expression AND expression
+         Conditional expression AND conditional expression
+
+<I><B>See Also:</B></I> OR, NOT, XOR, IF
+
+<I><B>PURPOSE:</B></I>
+ Finds out a logical multiplication between expressions. Also,
+it connects conditional expressions.
+
+<I><B>REMARKS:</B></I> 
+* Values of logical multiplication is as follows in
+digital numbers:
+1 AND 1=1    0 AND 1=0
+1 AND 0=0    0 AND 0=0
+
+Even when finding logical multiplication in decimal numbers, the
+decimal numbers are converted into digital ones to find logical
+multiplication of each digit and then the results are turned back to be
+in decimal numbers. 
+
+<I><B>EXAMPLE:</B></I>
+	41 AND 27 = 9
+41 and 27 are converted into digital numbers(101001 and 011011) and AND in each digit is
+taken off. Then the result(001001) is converted back to be in decimal number
+which is 9.
+* Integral parts of the values ranging from -32,768 to 32,767 are
+effective.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=asc>
+<H3>ASC</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ASC  "string"
+              string variable
+
+<I><B>See Also:</B></I> CHR$
+
+<I><B>PURPOSE:</B></I>
+Returns the character code for the first character in the specified string.
+
+<I><B>REMARKS:</B></I>
+Specify the string as the contents of a string variable in the form X$ or as an actual string 
+enclosed in quotes, "XXXX". Only the character code of the first character in the string is 
+returned. See character code table for character code.
+<LI><A HREF="Help.html#Font">CHARACTER CODE TABLE</A><p>
+
+<I><B>EXAMPLE:</B></I>
+10 INPUT "ENTER A CHARACTER"; A$
+20 N = ASC A$
+30 PRINT "THE CHARACTER CODE IS "; N
+40 GOTO 10
+
+[10] The user presses a key to enter a character.
+[20] ASC finds the code number for the character.
+[30] The answer is displayed.
+[40] Repeats until the user halts the program.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=beep>
+<H3>BEEP</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> BEEP expression
+
+<I><B>PURPOSE:</B></I>
+Sound the beep with expression times.
+
+<I><B>REMARKS:</B></I>
+Expression is from 1 to 255.
+
+<I><B>EXAMPLE:</B></I>
+10 BEEP 2
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=chrd>
+<H3>CHR$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> CHR$ expression
+
+<I><B>See Also:</B></I> ASC
+
+<I><B>PURPOSE:</B></I>
+Returns the character that corresponds to the numeric character code of the parameter.
+
+<I><B>REMARKS:</B></I>
+See character code table for a chart of character codes and their relationship to characters, 
+e.g., CHR$ 65 is "A".
+<LI><A HREF="Help.html#Font">CHARACTER CODE TABLE</A><p>
+
+A hexadecimal number can be specified with "&H" in front of the character code (eg. A$= 
+CHR$ &amp;H5A)
+
+A value greater than 255 generates an error.
+
+<I><B>EXAMPLE:</B></I>
+10 AA$=""
+20 INPUT "CODE=" ;A
+25 CLS
+30 AA$=AA$+CHR$ A
+40 LOCATE 7,1
+45 PRINT AA$
+50 GOTO 20
+
+Displays the characters represented by the codes entered in line 20.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=circle>
+<H3>CIRCLE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> CIRCLE (expression 1, expression 2), expression 3 [,[expression 4]
+                 ,[ expression 5] ,[ expression 6] [,[ S | R | X] ,[ expression 7]]]
+
+
+<I><B>PURPOSE:</B></I> 
+Draws circles, sector forms and ellipses in the DEGREE mode.  
+<I><B>REMARKS:</B></I>
+* Draws a circle with a point indicated with (expression1, expression2)
+as a center and the length (the number of dots) indicated with
+expression3 as a radius.
+
+Expression1: An X-coordinate of the central point. It is 0 at the left
+end and 238 at the right end.
+Expression2: A Y-coordinate of the central point. It is 0 at the upper
+end and 69 at the lower end. 
+
+The values of the expressions 1 and 2 can be designated from the numbers
+ranging from -32,768 to 32,767. However, when they exceed the range
+given above, a circle is drawn with the designated point outside the
+display as the center. 
+
+* The radius of the circle is designated by the expression 3 in the
+number of dots. The value of the expression 3 is within a range from 1
+to 32,767.
+
+* The expression 4 and the expression 5 indicate the angle to start
+drawing and the one to end drawing, respectively, in units of degrees.
+The values of the expressions 4 and 5 are designated within a range from
+0 to 360 degrees. It is zero at the right side of the central point and
+draws in a counterclockwise rotation. If the values are not set, the
+angle to start drawing will be zero and the one to end drawing will be
+360 (and it will be a circle).
+
+Please designate angles in the DEGREE mode, circles cannot be drawn
+correctly in RADIAN and GRAD modes.
+
+* You can draw sector forms by setting negative numbers for the starting
+and the ending angles because it draws a line between a circumference
+and the central point of the circle (a radius line). When a negative
+number is set, it is considered that its absolute value is set to draw a
+figure. Also, when an angle is designated in a variable in order to draw
+a radius line with zero degree angle, you can either designate -360
+degrees or -1* a name of a variable. Even if -0 is entered as a
+variable, it is considered as +0.
+
+* The value of the expression 6 indicates a ratio.
+A circle is drawn when the ratio is 1, and ellipses are drawn in other
+cases. If nothing is designated, it is set as 1.
+             Y-axial radius (ry)
+Ratio = ------------------
+             X-axial radius (rx)     
+
+Set the ratio as 0.5 to draw an ellipse which is long sideways.
+
+* Designate S, R or X to light on, turn off or inverse the dots on the
+circumference of the circle, respectively. If nothing is designated, it
+is set as S.
+S: Draw Circle while activating the corresponding dots on the screen(set).  
+R: Draw Circle while deactivating the corresponding dots on the screen (reset ). 
+   This option is useful to draw a line in reverse video or to erase an existing line. 
+X: Draw Circls, activating the corresponding dots if they are inactive, or deactivating the
+    corresponding dots if they are already active (reverse).  
+
+* The expression 7 indicates a pattern within a circle as below. If
+nothing is designated, it is set as 0.
+    0: White
+    1: Stripe (Vertical) 
+    2: Stripe (Horizontal)
+    3: Stripe (Diagonal line)
+    4: Stripe (Diagonal line)
+    5: Check
+    6: Black
+
+<I><B>EXAMPLE:</B></I>
+ CIRCLE(71,23),20,,,0.5,,2
+Draws an ellipse which is long sideways.
+
+ CIRCLE(71,23),20,-45,-135
+Draws a sector form.
+
+Note: 
+* Even in case to draw a part of a circle, all of the circle must
+be within the range (from -32,768 to 32,767), otherwise an error will
+be caused.
+* Figures like circles, diagonal lines and curved lines may not be drawn
+with specific lines because they are composed of dots.
+* Drawing mat not be precise when a sector form with a small radius is
+drawn. 
+
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=clear>
+<H3>CLEAR</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> CLEAR 
+
+<I><B>See Also:</B></I> DIM, ERASE
+
+<I><B>PURPOSE:</B></I>
+Erases variables that have been used in the program and resets all preallocated variables to 
+zero or null.
+
+<I><B>REMARKS:</B></I>
+CLEAR recovers memory space used to store simple numeric variables, and array variables 
+secured using the DIM statement.
+
+Do not use the CLEAR command within a FOR...NEXT loop.
+
+Use the ERASE command to clear specific array variables.
+
+<I><B>EXAMPLE:</B></I>
+10 A = 5
+15 DIM C(5)
+20 CLEAR
+
+[20] Frees up the spaces assigned to C( ) and resets A to zero.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=cls>
+<H3>CLS</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> CLS
+
+<I><B>See Also:</B></I> LOCATE
+
+<I><B>PURPOSE:</B></I>
+Clears the display.
+
+<I><B>REMARKS:</B></I>
+Clears the display and resets the display start position to (0, 0).
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 INPUT A$
+30 FOR B = 0 TO 6
+40 CLS
+50 LOCATE 0,B
+60 PRINT A$
+70 NEXT B
+80 CLS
+90 END
+</PRE>
+
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=dated>
+<H3>DATE$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> DATE$
+
+<I><B>PURPOSE:</B></I>
+Returns the date of System Clock.
+
+<I><B>REMARKS:</B></I>
+Returns the date as "YYYYMMDD".
+For example.
+&#9;"19991231"&#9;(If it is Dec,31 1999)
+&#9;"20000102"&#9;(If it is Jan,02 2000)
+
+Regardless of date displaying format for calendar and clock
+applications, it is always displayed as the above in this function.
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 PRINT"Date:";DATE$
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=degree>
+<H3>DEGREE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> DEGREE
+
+<I><B>See Also:</B></I> GRAD, RADIAN
+
+<I><B>PURPOSE:</B></I>
+Changes the form of angular values to decimal degrees.
+
+<I><B>REMARKS:</B></I>
+The device has three forms for representing angular values - decimal degrees, radians 
+and gradient. These forms are used in specifying the arguments to the SIN, COS, and TAN 
+functions and in returning the results from the ASN, ACS, and ATN functions.
+
+The DEGREE function changes the form of all angular values to decimal degree form until 
+GRAD or RADIAN is used. The DMS and DEG functions can be used to convert angles from 
+decimal degree form to degree, minute, second form and vice versa.
+At the beginning of a program the form of angular values to decimal degrees.
+
+<I><B>EXAMPLE:</B></I>
+10 DEGREE
+20 X = ASN 1
+30 WAIT
+40 PRINT X
+
+[20] X now has a value of 90; i.e., 90 degrees, the arc sine of 1.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=dim>
+<H3>DIM</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1. DIM variable name (size 1 [, size 2]) [, variable name (size 1 [, size 2])...]
+          2. DIM string vriable name (size 1 [, size 2])*size 3
+                                     [, string variable name (size 1 [, size 2])*size 3...]
+
+<I><B>See Also:</B></I> ERASE, CLEAR
+
+<I><B>PURPOSE:</B></I>
+Reserves space for numeric and string array variables.
+
+<I><B>REMARKS:</B></I>
+DIM must be used to reserve space for an array variable. The size of an array is the number 
+of elements in that array.
+
+The variable name consists of a letter and up to 2 alphanumeric characters. For string 
+variables, "$" is attached to the end of the variable name.
+
+Size 1, size 2 are called the "subscripts", and specify the number of elements in the nth 
+dimension of the array. An array with one subscript is called a one-dimensional array, with 
+two subscripts, it is called a two-dimensional .
+
+
+<I><B>EXAMPLE:</B></I>
+DIM B(3):
+    one-dimensional array B( ) reserves 4 array elements B(0), B(1), B(2) and B(3).
+DIM XA$(2,3):
+    two-dimensional string array XA$( ) reserves 12 array elements XA$(0,0), XA$(0,1)
+    , ..., XA$(2,2), XA$(2,3)
+
+Integers 0-255 can be used as subscripts, but an error may occur if a variable with the 
+specified size cannot be reserved because of limits in the memory size and conditions of 
+use.
+
+If the subscripts include a decimal point, only the integer part will be recognized (and the 
+fractional part will be ignored).
+
+The length of the character strings can be defined by FORMAT2.
+Defined by setting the 1-255 numbers in Size 3. 
+
+<I><B>EXAMPLE:</B></I>
+DIM A$(3)*20
+
+A$ is string array variable which is 20 character length.
+
+Numerical array and string array variables are recognized as different arrays; thus, 
+the arrays Z( ) and Z$( ) can be defined simultaneously.
+
+The DIM statement cannot be used within a FOR...NEXT loop.
+
+More than one array can be declared using one DIM statement.
+
+<I><B>EXAMPLE:</B></I>
+DIM V(5), K$(4,3), XB$(5)
+
+If an array has been defined, it cannot be defined again. For example, both DIM X(5) and 
+DIM X(3,4) cannot be defined since the variable names are the same.
+
+When a program is executed, allocated array variables are cleared.
+
+<I><B>EXAMPLE:</B></I>
+50 ERASE X
+60 DIM X(3,4)
+
+Numerical array and string array variables are recognized as different arrays; thus, 
+the arrays Z( ) and Z$( ) can be defined simultaneously.
+
+The DIM statement cannot be used within a FOR...NEXT loop.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=end>
+<H3>END</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> END
+
+<I><B>PURPOSE:</B></I>
+Signals the end of a program.
+
+<I><B>REMARKS:</B></I>
+The program will be terminated when the END statement is executed. 
+All opened files are closed.
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 PRINT "HELLO"
+30 END
+40 PRINT "GOODBYE"
+50 END
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=gcursor>
+<H3>GCURSOR</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> GCURSOR (expression 1, expression 2)
+
+<I><B>See Also:</B></I> LOCATE, GPRINT
+
+<I><B>PURPOSE:</B></I>
+Specifies the starting point of dot graphics display.
+
+<I><B>REMARKS:</B></I>
+GCURSOR specifies the display starting point for the dot pattern to be displayed by the 
+GPRINT command.
+
+The screen consists of 239 columns of 70 rows of dots, which can be addressed by column 
+numbers 0 to 238 and row numbers 0 to 69. Any dot on the screen can therefore be 
+addressed as a starting point by specifying the column number with expression 1 and the 
+row number with expression 2.
+
+<I><B>EXAMPLE:</B></I>
+10 CLS
+20 WAIT
+30 GCURSOR (115,20)
+40 GPRINT "1824458F452418"
+
+
+Note:
+The value of expressions 1 and 2 may range from -32768 to 32767. It should be noted, 
+however, that if the value of expression 1 is outside the range of 0 to 238 or that of 
+expression 2 is outside the range of 0 to 69, the display starting point will become a virtual 
+point which is outside the screen boundaries.
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=glen>
+<H3>GLEN</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> GLEN "string"
+
+<I><B>PURPOSE:</B></I>
+Return total dot width of the string.
+
+<I><B>EXAMPLE:</B></I>
+10 INPUT "ENTER A ";A$
+20 N = GLEN A$
+30 PRINT "Total font width is ";N
+40 GOTO 10
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,574 @@
+<HTML>
+<HEAD>
+
+<TITLE>
+BASIC COMMAND DICTIONARY
+</TITLE>
+
+</HEAD>
+<BODY>
+
+<A NAME=goto>
+<H3>GOTO</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> GOTO line number
+                   *label
+
+<I><B>See Also:</B></I> GOSUB, ON...GOTO
+
+<I><B>PURPOSE:</B></I>
+Transfers program control to a specified line number or *label.
+
+<I><B>REMARKS:</B></I>
+GOTO transfers control from one location in a BASIC program to another location.
+Unlike GOSUB, GOTO does not "remember" the location from which the transfer occurred.
+
+Usually, a program is executed sequentially from the smallest line number. However, 
+execution can be transferred to the line with the given line number or *label.
+The transfer destination is specified by entering the line number or *label after the GOTO 
+command.
+
+<I><B>EXAMPLE:</B></I>
+GOTO 40 	Jumps to line 40
+GOTO *AB 	Jumps to the line with label *AB
+
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+15 INPUT A$
+20 IF A$ = "Y" GOTO 50
+30 PRINT "NO"
+40 GOTO 60
+50 PRINT "YES"
+60 END
+
+This program prints "YES" if a "Y" is entered and prints "NO" if anything else is entered.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=gprint>
+<H3>GPRINT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1. GPRINT "string" 
+           2. GPRINT expression [; expression; expression;...]
+
+<I><B>See Also:</B></I> GCURSOR, PRINT
+
+<I><B>REMARKS:</B></I>
+Lowers the starting coordinates by one dot by expanding a letter string 
+or a value designated with the <dot pattern> to the side by 8 dots (MSB
+at left and LSB at right) including the starting coordinates designated
+as GCURSOR (MSB position). 
+The letter string between double quotation marks is translated by
+2-digit in hexadecimal number (1 byte). (In case of odd number of
+digits, the last one is ignored.)
+In case of a value instead of a letter string, it is designated by a
+byte, or multiple designation is possible by dividing them with
+semicolons (;).
+
+The Y-coordinate of the starting coordinates is increased by 1 after
+displaying 1 byte. If it results in the Y-coordinate to be outside the
+screen, it is set as 0.
+
+<I><B>EXAMPLE:</B></I>
+GPRINT "F055AA0F"
+or GPRINT &HF0;&H55;&HAA;&H0F
+The coordinates designated with GPRINT
+
+Printed as follows.
+ 1 line F0h : 0000----
+ 2 line 55h : -0-0-0-0
+ 3 line AAh : 0-0-0-0-
+ 4 line 0Fh : ----0000
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=grad>
+<H3>GRAD</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> GRAD
+
+<I><B>See Also:</B></I> DEGREE, RADIAN
+
+<I><B>PURPOSE:</B></I>
+Changes the form of angular values to gradient form.
+
+<I><B>REMARKS:</B></I>
+The device has three forms for representing angular values: decimal degrees, radians, 
+and gradient. These forms are used in specifying the arguments to the SIN, COS, and TAN 
+functions and in returning the results form the ASN, ACS, and ATN functions.
+
+The GRAD function changes the form for all angular values to gradient form until DEGREE 
+or RADIAN is used. Gradient form represents angular measurement in terms of percent 
+gradient, i.e., a 45 degree angle is a 50 percent gradient.
+At the beginning of a program the form of angular values to decimal degrees(DEGREE).
+
+<I><B>EXAMPLE:</B></I>
+10 WAIT
+20 GRAND
+30 X = ASN 1
+40 PRINT X
+
+X now has a value of 100, i.e., a 100 gradient, the arc sine of 1.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=hexd>
+<H3>HEX$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> HEX$ expression
+
+<I><B>PURPOSE:</B></I>
+Converts a decimal number into its hexadecimal character string equivalent.
+
+<I><B>REMARKS:</B></I>
+The value of the expression must be in the range of -9999999999 to 9999999999.
+The resulting hexadecimal character string will be up to 10 digits long.
+
+<I><B>EXAMPLE:</B></I>
+C$ = HEX$ 12 + HEX$ 15
+
+C$ is assigned the character string "CF".
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=inkeyd>
+<H3>INKEY$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> INKEY$ INKEY$(1)
+
+<I><B>PURPOSE:</B></I>
+Gives the specified variable the value of the key pressed while the INKEY$ function is 
+executed.
+
+<I><B>REMARKS:</B></I>
+INKEY$ is used to respond to the pressing of individual keys without waiting for the enter 
+key to end the entry.
+
+INKEY$(1) is used to save the battery by waiting for any key is pressed.
+
+See the key code table for a list of applicable keys and the characters that are returned.
+
+Do not use INKEY$ in statement directly. Please be sure to let it into the variable at first.
+
+In the loop of INKEY$, program cannot be quit by ESC key. Please quit by using POWER 
+key. And do not enter 2nd keys for input.
+
+We strongly recommend to use INKEY$(1) to save the battery.
+
+<I><B>EXAMPLE:</B></I>
+10 CLS
+20 A$=INKEY$
+30 IF A$="" THEN 20
+40 B=ASC A$
+50 IF B=0 THEN 20
+60 WAIT
+70 PRINT "INKEY$ code=";B
+
+</PRE>
+
+<TABLE BORDER=1>
+<TR><TH><BR></TH><TH>00h</TH><TH>10h</TH><TH>20h</TH><TH>30h</TH><TH>40h</TH><TH>50h</TH><TH>60</TH><TH>70</TH><TH>80</TH><TH>90</TH><TH>A0</TH><TH>B0</TH><TH>C0</TH><TH>D0</TH><TH>E0</TH><TH>F0</TH></TR>
+<TR><TH>0</TH><TD><BR></TD><TD><BR></TD><TD>SPACE</TD><TD>0</TD><TD><BR></TD><TD>P</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>1</TH><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>1</TD><TD>A</TD><TD>Q</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>2</TH><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>2</TD><TD>B</TD><TD>R</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>3</TH><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>3</TD><TD>C</TD><TD>S</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>4</TH><TD>UP KEY</TD><TD><BR></TD><TD><BR></TD><TD>4</TD><TD>D</TD><TD>T</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>5</TH><TD>DOWN KEY</TD><TD><BR></TD><TD><BR></TD><TD>5</TD><TD>E</TD><TD>U</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>6</TH><TD>PREV KEY</TD><TD><BR></TD><TD><BR></TD><TD>6</TD><TD>F</TD><TD>V</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>7</TH><TD>NEXT KEY</TD><TD><BR></TD><TD><BR></TD><TD>7</TD><TD>G</TD><TD>W</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>8</TH><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>8</TD><TD>H</TD><TD>X</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>9</TH><TD>MENU</TD><TD><BR></TD><TD><BR></TD><TD>9</TD><TD>I</TD><TD>Y</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>A</TH><TD>ENTER</TD><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>J</TD><TD>Z</TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>B</TH><TD><BR></TD><TD>ESC</TD><TD><BR></TD><TD><BR></TD><TD>K</TD><TD><BR></TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>C</TH><TD>DEL</TD><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>L</TD><TD><BR></TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>D</TH><TD>Enter-Mark</TD><TD><BR></TD><TD><BR></TD><TD><BR></TD><TD>M</TD><TD><BR></TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>E</TH><TD>RIGHT KEY</TD><TD>NEW</TD><TD><BR></TD><TD><BR></TD><TD>N</TD><TD><BR></TD><TD COLSPAN=10><BR></TD></TR>
+<TR><TH>F</TH><TD>LEFT KEY</TD><TD>CATEGORY</TD><TD><BR></TD><TD><BR></TD><TD>O</TD><TD><BR></TD><TD COLSPAN=10><BR></TD></TR>
+
+</TABLE>
+<p>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=input>
+<H3>INPUT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1.INPUT variable [, variable]
+         2. INPUT "prompt string", variable [,"prompt string", variable...]
+         3. INPUT "prompt string"; variable [,"prompt string"; variable...]
+
+<I><B>See Also:</B></I> INKEY$, READ, LOCATE
+
+<I><B>PURPOSE:</B></I>
+Allows entry of one or more values from the keyboard.
+
+<I><B>REMARKS:</B></I>
+When you want to enter different values each time a program is run, use INPUT to enter 
+these values from the keyboard.
+
+Format 1 displays symbol "?" to prompt data entry. If data is entered and the enter key is 
+pressed at this prompt, the system assigns the data to the variable and resumes program 
+execution.
+If more than one variable is specified, the data prompt is repeated the corresponding 
+number of times.
+When "?" is displayed, the data of pasted or symbols cannot be entered.
+
+During data prompt, format 2 displays the character string enclosed by double quotes ("") as 
+entry guidance. The guidance disappears when data is entered.
+When guidance is displayed, the data of pasted or symbols cannot be entered.
+
+Format 3 also displays entry guidance during data prompt, but the entered data appears 
+following the entry guidance, which does not disappear.
+
+The type of the variables given in the INPUT statement must match the type of input data. 
+Assign string data to string variables, and numerical data to numerical variables. 
+
+If the variable type is numeric, only the numeric part from the top is inputted to the variable.  
+
+If the start position is specified using the LOCATE statement before executing the INPUT 
+statement, the prompt string or ? will be displayed at the specified location.
+Please use the POWER key to quit the INPUT command. ESC key will skip the INPUT 
+command only.
+
+EXAMPLE
+10 INPUT A
+20 INPUT "A=";A
+30 INPUT "A=",A
+40 INPUT "X=?";X,"Y=?";Y
+
+[10] Puts a question mark at the left margin.
+[20] Displays "A=" and waits for data to be entered.
+[30] Displays "A=". When data is entered, "A=" disappears and the data is displayed starting at the left 
+margin.
+[40] Displays "X=?" and waits for the first entry. After enter is pressed. "Y=?" is displayed at the left margin.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=leftd>
+<H3>LEFT$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> LEFT$("string", expression)  
+
+<I><B>See Also:</B></I> MID$, RIGHT$  
+
+<I><B>PURPOSE:</B></I>  
+Returns the specified number of characters from the left end of a given string.  
+
+<I><B>REMARKS:</B></I>  
+LEFT$ returns the number of characters specified by the expression from the left end of the 
+given string.  
+For example, if A$="ABCD", LEFT$(A$,3) returns the leftmost 3 characters, "ABC". 
+
+<I><B>EXAMPLE:</B></I>  
+10 WAIT
+20 X$="SHARP"  
+30 FOR N=1 TO 5  
+40 LET S$=LEFT$(X$,N)  
+50 PRINT S$
+60 NEXT N  
+
+S  
+SH  
+SHA  
+SHAR  
+SHARP
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=len>
+<H3>LEN</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> LEN "string"
+ 
+<I><B>PURPOSE:</B></I>  
+Returns the number of characters in a string.  
+
+<I><B>REMARKS:</B></I>  
+The number of characters in the string includes any blanks or non-printable characters such 
+as control codes or carriage returns.  
+
+<I><B>EXAMPLE:</B></I>  
+10 WAIT
+20 INPUT"ENTER A WORD" ; A$  
+30 N=LEN A$
+40 PRINT "THE WORD LENGTH IS" ; N  
+50 END  
+
+
+ENTER A WORD CHERRY  
+THE WORD LENGTH IS 6
+
+[20] Prompts for a word. In this example, the user enters ÅgCHERRYÅh.
+[30] Finds the length of the word.  
+[40] Prints out the answer.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=let>
+<H3>LET</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1. LET numeric variable = expression  
+          2. LET string variable = string  
+
+<I><B>PURPOSE:</B></I>  
+Used to assign a value to a variable.  
+
+<I><B>REMARKS:</B></I>  
+LET assigns the value of the expression to the designated variable. The type of the 
+expression must match that of the variable; i.e. only numeric expressions can be assigned 
+to numeric variables and only string expressions can be assigned to string variables.  
+
+The LET command may be omitted in all LET statements.  
+Do not omit the "LET" statement in IF statement.
+
+<I><B>EXAMPLE:</B></I>  
+10 I=10  
+20 A=5*I  
+30 X$=STR$ A  
+40 IF I=10 THEN LET Y$=X$+".00"  
+
+[10] Assigns the value 10 to I.  
+[20] Assigns the value 50 to A. 
+[30] Assigns the value 50 to X$.  
+[40] Assigns the value 50.00 to Y$.  
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=line>
+<H3>LINE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>  LINE [(expression 1, expression 2)]-(expression 3,expression 4)  
+                   [,[ S | R | X ]] [,expression 5] [,[ B | BF ]]
+
+<I><B>See Also:</B></I> GCURSOR, PSET  
+
+<I><B>PURPOSE:</B></I>  
+Used to draw a line between two specified points.  
+
+<I><B>REMARKS:</B></I>  
+LINE is used to draw a line from the coordinates specified by (expression 1, expression 2) to 
+the coordinates specified by (expression 3, expression 4).  
+
+<I><B>EXAMPLE:</B></I>
+LINE(0,0) - (238,69)  
+This statement draws a diagonal line from the upper left corner to lower right corner of the 
+screen.  
+
+The values of expressions 1 through 4 should be within the following range of values:  
+
+Expressions 1 and 3: 0 to 238  
+Expressions 2 and 4: 0 to 69  
+
+(Expression 1, expression 2) may be omitted. If omitted, a line is drawn from the origin (0,0) 
+or from the point specified by (expression 3, expression 4) used in a previous LINE 
+statement.  
+
+<I><B>EXAMPLE:</B></I>  
+10 CLS  
+20 LINE(10,0) - (238,16)  
+30 LINE - (100,31)  
+
+Note:  
+Since the screen is made up of a matrix of dots, a diagonal line may appear as a staircase, 
+and curves may not appear as complete curves.  
+Options S, R, and X are used to set, reset, or reverse the specified line on the screen.  
+S: Draws a line while activating the corresponding dots on the screen(set).  
+R: Draws a line while deactivating the corresponding dots on the screen (reset ). 
+   This option is useful to draw a line in reverse video or to erase an existing line. 
+X: Draws a line, activating the corresponding dots if they are inactive, or deactivating the 
+   corresponding dots if they are already active (reverse).  
+
+The default parameter is S.  
+
+Expression 5 is used to specify the type of line by a value from 0 to 65535. 
+For example,if the value of expression 5 is 26214(=&H6666),the following line is drawn:
+
+<IMG SRC="line.gif">
+
+Binary representation of 26214($H6666) is: 0110011001100110.
+
+If you compare this bit pattern with the dot pattern above, you will notice that the dots 
+corresponding to "one" bits are activated while those corresponding to "zero" bits are not. 
+Thus, the type of line is determined by the binary 16-bit pattern of the value of expression 5. 
+If the value is zero, no line appears; and if it is 65535 (&HFFFF), a solid line is drawn. A solid 
+line is also drawn if expression 5 is omitted.  
+
+If option R is specified, the dots corresponding to "one" bits are deactivated on the screen; if 
+option X is specified, the status of the dots corresponding to "one" bits are reversed.
+
+Options B and BF are used to draw a rectangle whose opposite corners are specified by 
+(expression 1, expression 2) and (expression 3, expression 4).  
+Option B is used to draw a line rectangle.  
+Option BF is used to draw a solid rectangle. 
+
+In some case, right end of line is not shown when line is 2 dots width.
+
+<I><B>EXAMPLE:</B></I>  
+10 CLS
+20 AA$ = "102812FD122810"  
+30 GCURSOR(64,20)  
+40 GPRINT AA$;AA$;AA$  
+50 LINE(24,0)-(124,31),&HF18F,B  
+60 LINE(34,3)-(114,28),X,BF  
+70 GOTO 60
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=locate>
+<H3>LOCATE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> LOCATE expression 1,expression 2
+
+<I><B>See Also:</B></I> CLS, INPUT, PRINT, GCURSOR  
+
+<I><B>PURPOSE:</B></I>  
+Specifies the display start position.  
+
+<I><B>REMARKS:</B></I> 
+Specifies the display start position for the contents displayed by the PRINT command, etc.  
+
+The display position is specified as follows.  
+-Horizontal position (specified by expression 1)  
+-Vertical position (specified by expression 2)  
+
+A Position on the display is specified by its horizontal and vertical positions. Expression 1 
+specifies the horizontal graphic position, and expression 2 specifies the vertical character 
+position. The range of expression 1 is 0 to 238, and the range of expression 2 is 0 to 6. An 
+error occurs if the expressions are not specified within these ranges.  
+
+When a comma (,) or semi-colon (;) is not placed at the end of the statement (e.g. 
+PRINT"ABC"), the start position for the next display command moves to the horizontal 
+position of the next line.
+
+<I><B>EXAMPLE:</B></I>  
+10 CLS
+20 WAIT  
+30 LOCATE 20,1
+40 PRINT"ABCDE"  
+
+Using the LOCATE command allows text to be written to any part of the display without 
+affecting existing text except where characters are directly overwritten. Use the CLS 
+command to clear the whole display.  
+
+If the number of characters exceed the limits of the display, the display is scrolled to show all 
+the characters, even if the display start position was specified with the LOCATE command.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=mdf>
+<H3>MDF</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> MDF (expression)  
+
+<I><B>See Also:</B></I> USING  
+
+<I><B>PURPOSE:</B></I>  
+Rounds up the value of expression.  
+
+<I><B>REMARKS:</B></I>  
+The MDF function rounds the value of an expression to the number of decimal places 
+specified by the USING command.  
+
+MDF is effective only when the number of decimal places is specified for a value by the 
+USING command.  
+
+
+<I><B>EXAMPLE:</B></I>  
+10 WAIT
+20 USING"###.###"  
+30 A = MDF(5/9)  
+40 PRINT A  
+50 USING  
+60 PRINT A, 5/9  
+70 END  
+
+               0.556
+0.556 5.55555E-01  
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=midd>
+<H3>MID$</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> MID$("string", expression 1 , expression 2) 
+
+<I><B>See Also:</B></I> LEFT$, RIGHT$
+
+<I><B>PURPOSE:</B></I>  
+Return the characters starting from the position specified at expression 1 ,
+for the numbers specified at expression 2.
+
+<I><B>REMARKS:</B></I>  
+If the expression 1 is greater than the number of characters in the string, 
+ a null string is returned.  
+If the expression 1 is less than 1, an error occurs. The expression 2 must be 
+ in the range of 0 to 254 and the expression 1 in the range of 1 to 254. 
+Fractions will be rounded down.  
+
+<I><B>EXAMPLE:</B></I>  
+10 WAIT
+20 Z$="ABCDEFG"  
+30 LET Y$=MID$(Z$,3,4)  
+40 PRINT Y$
+
+CDEF
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=not>
+<H3>NOT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> NOT expression
+
+<I><B>See Also:</B></I> AND, OR, XOR
+
+<I><B>PURPOSE:</B></I>
+ Takes a denial of the given value.
+
+<I><B>REMARKS:</B></I>
+ * The values of denials in decimal numbers are as follows:
+NOT 1=0
+NOT 0=1
+*  Denials of the decimal numbers are converted into digital ones to
+deny each digit and then the results are turned back to be in decimal
+numbers.
+Assuming that the decimal number for this case to be X, the relation
+between the X and its denial (NOT X) is as below:
+NOT X = -(X+1)
+Therefore, 
+NOT 0=-1
+NOT-1=0
+NOT-2=1
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+</BODY>
+</HTML>

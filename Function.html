@@ -1,0 +1,760 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//HTML 3.2 final//EN">
+<HTML>
+<HEAD>
+<TITLE>
+SCIENTIFIC&MATHEMATICAL CALCULATIONS
+</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><H2>SCIENTIFIC&MATHEMATICAL CALCULATIONS</H2></CENTER>
+<A NAME=Top></A>
+<PRE>
+The device has a wide range of built-in functions for scientific, mathematical and 
+statistical calculations. They are listed below alphabetically. All the functions listed below 
+can be used in My programs-Add in. They may also be used as BASIC commands within 
+programs.
+
+For trigonometric functions, entries can be made in degrees, radians or as a gradient value, 
+as appropriate:
+</PRE>
+<TABLE>
+<TR><TD>DEGREE:</TD>
+    <TD>Set the device to degree entry mode, this is the default mode.</TD></TR>
+<TR><TD>RADIAN:</TD>
+    <TD>Set the device to radian entry mode.</TD></TR>
+<TR><TD>GRAD:</TD>
+    <TD>Set the device to gradient entry mode.</TD></TR>
+</TABLE>
+<PRE>
+These three modes (DEGREE, RADIAN, and GRAD) can be set from within a program. 
+Once one mode is set, all entries for trigonometric functions must be in the units set 
+(degrees, radians, or gradient values) until the mode is changed in a program. At the 
+beginning of a program the form of angular values to decimal degrees.
+</PRE>
+
+
+<A HREF="#abs">ABS</A> <A HREF="#acs">ACS</A> <A HREF="#ahc">AHC</A> <A HREF="#ahs">AHS</A> <A HREF="#aht">AHT</A> <A HREF="#asn">ASN</A> <A HREF="#atn">ATN</A><BR>
+<A HREF="#cos">COS</A> <A HREF="#cub">CUB</A> <A HREF="#cur">CUR</A><BR>
+<A HREF="#deg">DEG</A> <A HREF="#dms">DMS</A><BR>
+<A HREF="#exp">EXP</A><BR>
+<A HREF="#fact">FACT</A><BR>
+<A HREF="#hcs">HCS</A> <A HREF="#hsn">HSN</A> <A HREF="#htn">HTN</A><BR>
+<A HREF="#int">INT</A><BR>
+<A HREF="#ln">LN</A> <A HREF="#log">LOG</A><BR>
+<A HREF="#ncr">NCR</A> <A HREF="#npr">NPR</A><BR>
+<A HREF="#pi">PI</A> <A HREF="#pol">POL</A> <A HREF="#power">^(Power)</A><BR>
+<A HREF="#rcp">RCP</A> <A HREF="#rec">REC</A> <A HREF="#rnd">RND</A><BR>
+<A HREF="#sgn">SGN</A> <A HREF="#sin">SIN</A> <A HREF="#sqr">SQR</A> <A HREF="#squ">SQU</A><BR>
+<A HREF="#tan">TAN</A> <A HREF="#ten">TEN</A><BR>
+<p>
+<A HREF="#range">Calculation Ranges</A><BR>
+<p>
+
+<A HREF="Help.html#Main">Return to Help TOP</A><p>
+
+<HR>
+<A NAME=abs>
+<H3>ABS</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">|x|</H4>
+<B>Function:</B> Absolute value
+
+<B>Remarks:</B> Returns the absolute value of the numeric argument. The absolute value is the 
+         magnitude of the number irrespective of its sign. ABS-10 is 10.
+
+<B>Example:</B>
+10 PRINT ABS-10
+
+(Answer=)10
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=acs>
+<H3>ACS</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">cos<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse or arc cosine
+
+<B>Remarks:</B> Returns the arc cosine of the numeric argument. The arc cosine is the angle 
+         whose cosine is equal to the argument. The value returned depends on the mode 
+         (DEGREE, RADIAN, or GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT ACS-0.5
+
+(Answer=)120
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=ahc>
+<H3>AHC</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">cosh<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse hyperbolic cosine
+
+<B>Remarks:</B> Returns the inverse hyperbolic cosine of the numeric argument.
+
+<B>Example:</B>
+10 PRINT AHC 10
+
+(Answer=)2.993222846
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=ahs>
+<H3>AHS</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">sinh<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse hyperbolic sine
+
+<B>Remarks:</B> Returns the inverse hyperbolic sine of the numeric argument.
+
+<B>Example:</B>
+10 PRINT AHS 27.3
+
+(Answer=)4.000369154
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=aht>
+<H3>AHT</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">tanh<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse hyperbolic tangent
+
+<B>Remarks:</B> Returns the inverse hyperbolic tangent of the numeric argument.
+
+<B>Example:</B>
+10 PRINT AHT 0.7
+
+(Answer=)8.673005277E-01
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=asn>
+<H3>ASN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">sin<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse or arc sine.
+
+<B>Remarks:</B> Returns the arc sine of the numeric argument. The arc sine is the angle whose 
+         sine is equal to the argument. The value returned depends on the mode (DEGREE, 
+         RADIAN or GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT ASN 0.5
+
+(Answer=)30
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=atn>
+<H3>ATN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">tan<SUP>-1</SUP>x</H4>
+<B>Function:</B> Inverse or arc tangent
+
+<B>Remarks:</B> Returns the arc tangent of the numeric argument. The value returned depends 
+         on the mode (DEGREE, RADIAN or GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT ATN 1
+
+(Answer=)45
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=cos>
+<H3>COS</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">cosx</H4>
+<B>Function:</B> Cosine
+
+<B>Remarks:</B> Returns the cosine of the angle argument. The value returned depends on the 
+         mode (DEGREE, RADIAN or GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT COS 120
+
+(Answer=)-0.5
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=cub>
+<H3>CUB</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">x<SUP>3</SUP></H4>
+<B>Function:</B> Cube
+
+<B>Remarks:</B> Returns the cube of the argument.
+
+<B>Example:</B>
+10 PRINT CUB 3
+
+(Answer=)27
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=cur>
+<H3>CUR</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT"><SUP>3</SUP><IMG SRC="root.gif">x</H4>
+<B>Function:</B> Cube root
+
+<B>Remarks:</B> Returns the cube root of the argument.
+
+<B>Example:</B>
+10 PRINT CUR 125
+
+(Answer=)5
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=deg>
+<H3>DEG</H3>
+</A>
+<PRE>
+<B>Function:</B> Deg/min/sec to decimal conversion
+
+<B>Remarks:</B> Converts an angle argument in DMS (Degree, Minutes, Seconds) format to DEG 
+         (Decimal Degrees) format. In DMS format the integer portion of the number 
+         represents degrees, the first and second digits after the decimal point represent 
+         minutes, the third and fourth digits after the decimal point represent seconds, and 
+         any further digits represent fractional seconds.
+
+<B>Example:</B>
+10 PRINT DEG 30.5230
+
+(Answer=)30.875
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=dms>
+<H3>DMS</H3>
+</A>
+<PRE>
+<B>Function:</B> Decimal to deg/min/sec conversion
+
+<B>Remarks:</B> Converts an angle argument in DEG format to DMS format (see DEG).
+
+<B>Example:</B>
+10 PRINT DMS 124.8055
+
+(Answer=)124.48198 
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=exp>
+<H3>EXP</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">e<SUP>x</SUP></H4>
+<B>Function:</B> Exponential function
+
+<B>Remarks:</B> Returns the value of e (2.718281828... the base of natural logarithms) raised to 
+         the value of the numeric argument.
+
+<B>Example:</B>
+10 PRINT EXP 1.2
+
+(Answer=)3.320116923
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=fact>
+<H3>FACT</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">n!</H4>
+<B>Function:</B> Factorial n	
+
+<B>Remarks:</B> Returns the factorial of the argument.
+
+<B>Example:</B>
+10 PRINT FACT 7
+
+(Answer=)5040
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=hcs>
+<H3>HCS</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">cosh x</H4>
+<B>Function:</B> Hyperbolic cosine	
+
+<B>Remarks:</B> Returns the hyperbolic cosine of the numeric argument.
+
+<B>Example:</B>
+10 PRINT HCS 3
+
+(Answer=)10.067662
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=hsn>
+<H3>HSN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">sinh x</H4>
+<B>Function:</B> Hyperbolic sine
+
+<B>Remarks:</B> Returns the hyperbolic sine of the numeric argument.
+
+<B>Example:</B>
+10 PRINT HSN 4
+
+(Answer=)27.2899172
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=htn>
+<H3>HTN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">tanh x</H4>
+<B>Function:</B> Hyperbolic tangent
+
+<B>Remarks:</B> Returns the hyperbolic tangent of the numeric argument.
+
+<B>Example:</B>
+10 PRINT HTN 0.9
+
+(Answer=)7.162978702E-01
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=int>
+<H3>INT</H3>
+</A>
+<PRE>
+<B>Function:</B> Integer	
+
+<B>Remarks:</B> Maximum integer equal or less than numeric argument. The integer portion of PI is 3.
+
+<B>Example:</B>
+10 PRINT INT -1.9
+
+(Answer=)-2
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=ln>
+<H3>LN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">log<SUB>e</SUB>x</H4>
+<B>Function:</B> Natural or Naperian logarithm
+
+<B>Remarks:</B> Returns the logarithm to the base e (2.718281828...) of the numeric argument.
+
+<B>Example:</B>
+10 PRINT LN 2
+
+(Answer=)6.931471806E-01
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=log>
+<H3>LOG</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">log<SUB>10</SUB>x</H4>
+<B>Function:</B> Common logarithm	
+
+<B>Remarks:</B> Returns the logarithm to the base 10 of the numeric argument.
+
+<B>Example:</B>
+10 PRINT LOG 1000
+
+(Answer=)3
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=ncr>
+<H3>NCR</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">nCr=n!/r!(n-r)!</H4>
+<B>Function:</B> Combination
+
+<B>Remarks:</B> Enter the values as NCR (n,r).
+
+<B>Example:</B>
+10 PRINT NCR(6,3)
+
+(Answer=)20
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=npr>
+<H3>NPR</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">nPr=n!/(n-r)!</H4>
+<B>Function:</B> Permutation	
+
+<B>Remarks:</B> Enter the values as NPR (n,r).
+
+<B>Example:</B>
+10 PRINT NPR(6,3)
+
+(Answer=)120
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=pi>
+<H3>PI</H3>
+</A>
+<PRE>
+<B>Function:</B> PI	
+
+<B>Remarks:</B> PI is a numeric pseudovariable that has the value of pi. The value of PI has 10-
+digit accuracy.
+
+<B>Example:</B> 
+10 PRINT PI
+
+(Answer=)3.141592654
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=pol>
+<H3>POL</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">(x,y) -> (r,angle)</H4>
+<B>Function:</B> Rectangular to Polar coordinate conversion
+
+<B>Remarks:</B> Converts numeric arguments of rectangular coordinates to their polar coordinate 
+         equivalents. Enter the values as POL(x,y).
+
+          The first argument indicates the distance from the y-axis and the second the 
+         distance from the x-axis. The values converted indicate the distance from the 
+         origin and the angle in the polar coordinates, and are assigned to the 
+         variables Y and Z respectively. The angle depends on the mode (DEGREE, RADIAN, or 
+         GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT POL(8,6)
+30 PRINT Z
+40 PRINT Y
+
+(Answer)
+[20]10 (=r)
+[30]36.86989765 (=angle)
+[40]10 (=r)
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=power>
+<H3>^(Power)</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">y<SUP>x</SUP></H4>
+<B>Function:</B> xth power	
+
+<B>Remarks:</B> Returns the xth power of the numeric argument. Enter as y ^ x.
+
+<B>Example:</B>
+10 PRINT 4^2.5
+
+(Answer=)32
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=rcp>
+<H3>RCP</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">1/x</H4>
+<B>Function:</B> Reciprocal
+
+<B>Remarks:</B> Returns the reciprocal of the numeric argument.
+
+<B>Example:</B>
+10 PRINT RCP 4
+
+(Answer=)0.25
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=rec>
+<H3>REC</H3>
+
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">(r,angle) -> (x,y)</H4>
+<B>Function:</B> Polar to rectangular coordinate conversion
+
+<B>Remarks:</B> Converts numeric arguments of polar coordinates to their rectangular coordinate 
+         equivalents. Enter the values as REC(r,angle).
+
+         The first argument indicates the distance from the origin and the second 
+         argument the angle. The angle depends on the mode (DEGREE, RADIAN or GRAD). The 
+         converted values indicate the distances from the y-axis and the x-axis, and are 
+         assigned to the variables Y and Z, respectively.
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT REC(12,30)
+30 PRINT Z
+40 PRINT Y
+
+(Answer)
+[20]10.39230485 (=x)
+[30]6 (=y)
+[40]10.39230485 (=x)
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=rnd>
+<H3>RND</H3>
+</A>
+<PRE>
+<B>Function:</B> Random number		
+
+<B>Remarks:</B> See RND and RANDOMIZE in the BASIC COMMAND DICTIONARY.
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=sgn>
+<H3>SGN</H3>
+</A>
+<PRE>
+<B>Function:</B> Sign of argument
+
+<B>Remarks:</B> Returns a value based on the sign of the argument.
+
+         If x>0, the function returns 1.
+         If x&lt;0, the function returns -1.
+         If x=0, the function returns 0.
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=sin>
+<H3>SIN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">sin x</H4>
+<B>Function:</B> Sine
+
+<B>Remarks:</B> Returns the sine of the angle argument. The value returned depends on the 
+         mode (DEGREE, RADIAN or GRAD).
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT SIN 30
+
+(Answer=)0.5 
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=sqr>
+<H3>SQR</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT"><IMG SRC="root.gif">x</H4>
+<B>Function:</B> Square root
+
+<B>Remarks:</B> Returns the square root of argument.
+
+<B>Example:</B>
+10 PRINT SQR 3
+
+(Answer=)1.732050808
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=squ>
+<H3>SQU</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">x<SUP>2</SUP></H4>
+<B>Function:</B> Square
+
+<B>Remarks:</B> Returns the square of the argument.
+
+<B>Example:</B>
+10 PRINT SQU 4
+
+(Answer=)16
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=tan>
+<H3>TAN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">tan x</H4>
+<B>Function:</B> Tangent
+
+<B>Remarks:</B> Returns the tangent of the angle argument. The value returned depends on the 
+         mode (DEGREE, RADIAN or GRAD)
+
+<B>Example:</B>
+10 DEGREE
+20 PRINT TAN 45
+
+(Answer=)1
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=ten>
+<H3>TEN</H3>
+</A>
+<PRE>
+<H4 ALIGN="RIGHT">10<SUP>x</SUP></H4>
+<B>Function:</B> Antilogarithm	
+
+<B>Remarks:</B> Returns the value of 10 (the base of the common log) raised to the value of the 
+         numeric argument.
+
+<B>Example:</B>
+10 PRINT TEN 3
+ 
+(Answer=)1000
+
+</PRE>
+<A HREF="#Top">Return to Top</A>
+<HR>
+<A NAME=range>
+<H3>Calculation Ranges</H3>
+</A>
+<PRE>
+<B>Numerical Calculations:</B>
+For a calculation involving x, the number x must be within one of the ranges below:
+
+       -1x10<SUP>100</SUP> &lt; x &lt;= -1x10<SUP>-99</SUP> for negative x
+       10<SUP>-99</SUP>&lt;= x&lt;10<SUP>100</SUP> for positive x
+       x=0
+
+Note: =/= means not equal.
+</PRE>
+<B>Functions:</B>
+<TABLE BORDER=1>
+<TR><TH>Function</TH><TH>Range of x</TH></TR>
+<TR>
+    <TD>SIN x<BR>COS x<BR>TAN x<BR></TD>
+    <TD>DEGREE:   |x|&lt;1x10<SUP>10</SUP><BR>
+        RADIAN :  |x|&lt;(pi/180)x10<SUP>10</SUP><BR>
+        GRAD:  |x|&lt;(10/9)x10<SUP>10</SUP><BR>
+        <BR>
+        Also, for tan x only: (n=integer)<BR>
+        DEGREE:   |x|=/=90x(2n-1)<BR>
+        RADIAN:   |x|=/=(pi/2)x(2n-1)<BR>
+        GRAD:  |x|=/=100x(2n-1)<BR>
+    </TD>
+</TR>
+<TR>
+    <TD>ASN x<BR>ACS x<BR></TD>
+    <TD>-1&lt;=x&lt;=1</TD>
+</TR>
+<TR><TD>ATN x</TD><TD>|x|&lt;1x10<SUP>100</SUP></TD></TR>
+<TR><TD>HSN x<BR>HCS x<BR>HTN x<BR></TD><TD>-227.9559242&lt;=x&lt;=230.2585092</TD></TR>
+<TR><TD>AHS x</TD><TD>|x|&lt;1x10<SUP>50</SUP></TD></TR>
+<TR><TD>AHC x</TD><TD>1&lt;=x &lt;1x10<SUP>50</SUP></TD></TR>
+<TR><TD>AHT x</TD><TD>|x|&lt;1</TD></TR>
+<TR><TD>LN x<BR>LOG x<BR></TD><TD>1x10<SUP>-99</SUP> &lt;=x&lt; 1x10<SUP>100</SUP></TD></TR>
+<TR><TD>EXP x</TD><TD>-1x10<SUP>100</SUP> &lt;x&lt;=230.2585092</TD></TR>
+<TR><TD>TEN x</TD><TD>-1x10<SUP>100</SUP> &lt;x&lt;100</TD></TR>
+<TR><TD>CUR x</TD><TD>|x|&lt;1x10<SUP>100</SUP></TD></TR>
+<TR><TD>RCP x</TD><TD>|x|&lt;1x10<SUP>100</SUP>, x =/=0</TD></TR>
+<TR><TD>SQU x</TD><TD>|x|&lt;1x10<SUP>50</SUP></TD></TR>
+<TR><TD>SQR x</TD><TD>0&lt;=x&lt;1x10<SUP>100</SUP></TD></TR>
+<TR><TD>CUB x</TD><TD>|x|&lt;2.154434690x10<SUP>33</SUP></TD></TR>
+<TR><TD>FACT x</TD><TD>0&lt;=x&lt;=69 (x=integer)</TD></TR>
+<TR><TD>DMS x<BR>DEG x<BR></TD><TD>|x|&lt;1x10<SUP>100</SUP></TD></TR>
+<TR><TD>y^x (y<SUP>x</SUP>)<BR>(y<SUP>x</SUP>=10<SUP>x.log y</SUP>)</TD>
+    <TD>when y&gt;0, -1x10<SUP>100</SUP> &lt;x log y&lt;100<BR>
+        when y=0, x&gt;0<BR>
+        when y&lt;0, x=integer or(1/X)=odd integer(x=/=0)<BR>
+                  and -1x10<SUP>100</SUP> &lt;x log |y|&lt;100<BR>
+    </TD>
+</TR>
+<TR><TD>x<SUB><IMG SRC="root.gif"></SUB>y<BR>(y<SUP>x</SUP>=10<SUP>x.log y</SUP>)</TD>
+    <TD>when y&gt;0, -1x10<SUP>100</SUP> &lt;1/x X log y&lt;100, x=/=0<BR>
+        when y=0, x&gt;0<BR>
+        when y&lt;0, x or 1/x must be non-zero integer,<BR>
+                  and -1x10<SUP>100</SUP> &lt;1/x X log |y|&lt;100<BR>
+    </TD>
+</TR>
+<TR><TD>POL(x,y)<BR>x,y -&gt; r,<SUB><IMG SRC="sita.gif"></SUB></TD>
+    <TD>(x<SUP>2</SUP>+y<SUP>2</SUP>)&lt;1x10<SUP>100</SUP>       (r= <SUB><IMG SRC="root.gif"></SUB>(x<SUP>2</SUP>+y<SUP>2</SUP>))<BR>
+        x/y &lt; 1x10<SUP>100</SUP>                     (<SUB><IMG SRC="sita.gif"></SUB>=tan<SUP>-1</SUP> y/x)<BR>
+    </TD>
+</TR>
+<TR><TD>REC(r,<SUB><IMG SRC="sita.gif"></SUB>)<BR>r,<SUB><IMG SRC="sita.gif"></SUB>-&gt;x,y</TD>
+    <TD>r&lt;1x10<SUP>100</SUP>          (x=r cos<SUB><IMG SRC="sita.gif"></SUB>)<BR>
+        |r sin<SUB><IMG SRC="sita.gif"></SUB>|&lt;1x10<SUP>100</SUP>      (y=r sin<SUB><IMG SRC="sita.gif"></SUB>)<BR>
+        |r cos<SUB><IMG SRC="sita.gif"></SUB>|&lt;1x10<SUP>100</SUP><BR>
+    </TD>
+</TR>
+<TR><TD>&Hx</TD><TD>0&lt;=x&lt;=2540BE3FF</TD></TR>
+<TR><TD>NPR(n,r)</TD>
+    <TD>n!/(n-r)!&lt;10<SUP>100</SUP>  0&lt;=r&lt;=n&lt;9999999999<BR>
+        n,r integers</TD></TR>
+<TR><TD>NCR(n,r)</TD>
+    <TD>n!/((n-r)!xr!)&lt;10<SUP>100</SUP>  0&lt;=r&lt;=n&lt;9999999999<BR>
+        n,r integers<BR>
+        when n-r&lt;r, n-r&lt;=69<BR>
+        when n-r=&gt;r, r&lt;=69<BR>
+    </TD>
+</TR>
+</TABLE>
+<p>
+<A HREF="#Top">Return to Top</A>
+<HR>
+</BODY>
+</HTML>
+

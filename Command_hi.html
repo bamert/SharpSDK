@@ -1,0 +1,923 @@
+<HTML>
+<HEAD>
+<TITLE>
+BASIC COMMAND DICTIONARY
+</TITLE>
+</HEAD>
+<BODY>
+<A NAME=data>
+<H3>DATA</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> DATA list of values
+
+<I><B>See Also:</B></I> READ, RESTORE
+
+<I><B>PURPOSE:</B></I>
+Provides values for use by READ.
+
+<I><B>REMARKS:</B></I>
+When assigning initial values to an array, it is convenient to list the values in a DATA 
+statement and use a READ statement in a FOR...NEXT loop to load the values into the 
+array. When the first READ is executed, the first value in the first DATA statement is returned. 
+Succeeding READs use succeeding values in the sequential order in which they appear in 
+the program, regardless of how many values are listed in each DATA statement or how 
+many DATA statements are used.
+
+A DATA statement may contain any numeric or string values, separated by commas. 
+Enclose string values in quotes. Spaces at the beginning or end of a string should be 
+included in the quotes.
+
+DATA statements have no effect if encountered in the course of regular execution of the 
+program, so they can be inserted wherever appropriate. Many programmers include them 
+after the READ that uses them. If desired, the values in a DATA statement can be read a 
+second time using the RESTORE statement.
+
+Do not use the multi-statement.
+
+
+<I><B>EXAMPLE:</B></I>
+10 DIM B(10)
+20 WAIT
+30 FOR I = 1 TO 10
+40 READ B(I)
+50 PRINT B(I)
+60 NEXT I
+70 DATA 10,20,30,40,50,60
+80 DATA 70,80,90,100
+90 DATA "AB", "AB:CD"
+100 END
+
+[10] Sets up an array.
+[40] Loads the values from the DATA statement so that B(1) will be 10, B(2) will be 20, B(3) will be 30, etc.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=erase>
+<H3>ERASE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ERASE array [, array ... ]
+
+<I><B>See Also:</B></I> CLEAR, DIM
+
+<I><B>PURPOSE:</B></I>
+Erases specified arrays.
+
+<I><B>REMARKS:</B></I>
+Array elements cannot be erased individually; the whole array is cleared and its memory 
+area is freed. To re-define an array size, first ERASE it and then re-specify it in a DIM 
+statement.
+
+Do not use the ERASE command within a FOR...NEXT loop.
+ERASE command can not be used in multi-statement.
+
+<I><B>EXAMPLE:</B></I>
+ 10 DIM AA (10)
+  :
+  :
+200 ERASE AA
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=for>
+<H3>FOR...NEXT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>  FOR  numeric variable = expression 1 TO  expression 2
+                  [STEP expression 3]
+
+            NEXT  numeric variable
+
+<I><B>PURPOSE:</B></I>
+In combination with NEXT, repeats a series of operations a specified number of times.
+
+<I><B>REMARKS:</B></I>
+FOR and NEXT are used in pairs to enclose a group of statements that are to be repeated.
+If the variable following NEXT is omitted, the variable following FOR is assumed. The first 
+time this group of statements is executed the loop variable (the variable named immediately 
+following FOR) is assigned its initial value (expression 1).
+
+When execution reaches the NEXT statement, the loop variable is increased by the STEP 
+value (expression 3) and then this value is tested against the final value (expression 2). 
+EXPRESSION 3 is plus If the value of the loop variable is less than or equal to the final 
+value, the enclosed group of statements is executed again, starting with the statement 
+following FOR. EXPRESSION 3 is minus If the value of the loop variable is more than or 
+equal to the final value, the enclosed group of statements is executed again, starting with 
+the statement following FOR. If expression 3 for step size is omitted, the increment becomes 
+1. If the value of the loop variable is greater than the final value, execution continues with the
+statement that immediately follows NEXT. Because the comparison is made at the end, the 
+statements within a FOR...NEXT pair are always executed at least once.
+
+When the increment is zero, FOR...NEXT will continue in an infinite loop.
+
+The loop variable may be used within the group of statements, for example as an index to an 
+array, but care should be taken in changing the value of the loop variable.
+
+Write programs so that the program flow does not jump out of a FOR...NEXT loop before 
+the counter reaches the final value. To exit a loop before it has been repeated the specified 
+number of times, set the loop variable higher than the final value.
+
+The group of statements enclosed by a FOR...NEXT pair can include another pair of 
+FOR...NEXT statements that use a different loop variable as long as the enclosed pair is 
+completely enclosed; i.e., if a FOR statement is included in the group, the matching NEXT 
+must also be included. FOR...NEXT pairs may be "nested" up to six levels deep. Illegally 
+jumping out of an inner loop will generate an error, a nesting error.
+
+Do not use the CLEAR, DIM or ERASE command within a FOR...NEXT loop. And do not 
+use more than one "FOR" or "NEXT" command in a line.
+
+FOR...NEXT statement may be "nested" up to 6 levels deep.
+
+Do not use the multi-statement after FOR...TO(...STEP).
+Release ERROR BRANCH with ON ERROR GOTO 0 before a line including FOR 
+because it will cause an error in the line to cause malfunction.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+<A NAME=gosub>
+<H3>GOSUB...RETURN</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> GOSUB line number
+                    *label
+
+  RETURN
+
+<I><B>See Also:</B></I> GOTO, ON...GOSUB
+
+<I><B>PURPOSE:</B></I>
+Diverts program execution to a BASIC subroutine.
+
+<I><B>REMARKS:</B></I>
+When you wish to execute the same group of statements several times in the course of a 
+program, it is convenient to use the BASIC capability for subroutines using GOSUB and 
+RETURN.
+
+The group of statements is included in the program at some location where they are not 
+reached in the normal sequence of execution. A common location is following the END 
+statement that marks the end of the main program.
+
+At each location in the main body of the program where a subroutine is to be executed, 
+include a GOSUB statement with a line number or *label that indicates the starting line 
+number of the subroutine. The last line of each subroutine must be a RETURN.
+When GOSUB is executed, the device transfers control to the indicated line number or 
+*label and processes the statements until a RETURN is reached. Control is then transferred 
+back to the statement following the GOSUB.
+
+Subroutines may be "nested" up to 10 levels deep.
+
+Since there is an ON...GOSUB structure for choosing different subroutines at given 
+locations in the program, the expression in a GOSUB statement usually consists of just the 
+desired line number or *label.
+
+Do not use ELSE statement, if GOSUB statement is used in THEN statement.
+Otherwise ERROR number is not correct if error occurred in RETURN statement.
+
+Do not use more than one "GOSUB" or "NEXT" command in a line.
+
+<I><B>EXAMPLE:</B></I> 
+ 10 WAIT
+ 20 GOSUB 100
+ 30 END
+100 PRINT "HELLO"
+110 RETURN
+
+When run, this program prints HELLO once.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=if>
+<H3>IF...THEN...ELSE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>
+                  line number                   line number
+IF condition THEN *label 		[:ELSE	*label		]
+                  statement                     statement
+
+
+<I><B>See Also:</B></I> AND, OR, NOT, XOR
+
+<I><B>PURPOSE:</B></I>
+Conditionally executes a statement at the time the program is run.
+
+<I><B>REMARKS:</B></I>
+When the condition of the IF statement is true, the statement following THEN is executed; if 
+it is false, the statement following ELSE is executed. When the ELSE statement is omitted 
+and the condition is false, the statement following THEN is skipped.
+
+Put LET statement before using "=" statement such as "A=A-1", Otherwise error 
+line number is not correct, if error occurred in IF statement.
+
+If THEN or ELSE is followed by a GOTO statement, either THEN or GOTO may be omitted 
+(ELSE statement must be included).
+
+<I><B>EXAMPLE 1:</B></I>
+IF A &lt; 5 THEN LET C=A*B
+IF A is smaller than 5, then assign the product, A*B, to C.
+
+<I><B>EXAMPLE 2:</B></I>
+IF B=C+1 GOTO 60 :ELSE 100
+or
+IF B=C+1 THEN 60 :ELSE 100
+If B equals C+1, then go to line 60; otherwise go to line 100.
+
+<I><B>EXAMPLE 3:</B></I>
+IF A=B THEN LET A=B+1:ELSE LET A=A-1
+
+
+The condition (e.g. A &lt; 5) of the IF statement can be any relational expression as listed 
+below.
+</PRE>
+
+<TABLE BORDER=1>
+<TR><TH>Relational expression</TH><TH>Description</TH></TR>
+<TR>
+    <TD>OO=XX<BR>OO&gt;XX<BR>OO&gt;=XX<BR>OO&lt;XX<BR>OO&lt;=XX<BR>OO&lt;&gt;XX<BR></TD>
+    <TD>Equal to<BR>Greater than<BR>No less than<BR>Less than<BR>No greater than<BR>Not Equal to<BR></TD>
+</TR>
+</TABLE>
+<PRE>
+Note : OO and XX represent expressions (5*4, A, 8, etc.).
+
+More than one relational expression can be linked with the logical operators "*" or "+". 
+For example:
+IF (A&gt;5) *(B&gt;1) THEN...
+If A is greater than 5 and B is greater than 1, the statement following THEN is executed. 
+Logical operator "AND" may be used in place of "*".
+IF (A&gt;5)+(B&gt;1) THEN...
+If A is greater than 5 or B is greater than 1, the statement following THEN is executed. 
+Logical operator "OR" may be used in place of "+".
+
+<B>Using Character Strings in Relational Expressions</B>
+The magnitudes of character strings can be compared when used in a relational expression 
+of an IF...THEN...ELSE statement. The magnitudes of character codes are compared. For 
+example, characters A, B, and C have codes 65, 66, and 67, respectively. So A is smaller 
+than B, and B is smaller than C.
+
+<I><B>EXAMPLE:</B></I>
+10 INPUT"CONTINUE?";A$
+20 IF A$="YES" THEN 10
+30 IF A$="NO" THEN 60
+40 PRINT "YES OR NO, PLEASE"
+50 GOTO 10
+60 END
+
+Note:
+Whenever a variable name is to be followed by a statement, be sure to insert a space 
+between them, for example:
+100 IF A=B_THEN 200
+           A space is needed.
+Pay special attention to this when you use the IF, FOR, ON...GOTO, or ON...GOSUB 
+command.
+
+Release ERROR BRANCH with ON ERROR GOTO 0 before a line including IF statement because 
+it will cause an error in the line to cause malfunction.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+</BODY>
+</HTML>
+
+<A NAME=wait>
+<H3>WAIT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> 1.WAIT expression
+         2.WAIT
+
+<I><B>See Also:</B></I> PRINT, GPRINT, CIRCLE
+
+<I><B>PURPOSE:</B></I> 
+Controls the length of time that displayed information is shown before program execution 
+continues.
+
+<I><B>REMARKS:</B></I>
+Format 1 specifies the time in which execution of the PRINT command halts. The program 
+temporarily halts for the specified time interval, then automatically restarts.
+
+The value of the expression may be set to any value from 0 to 1800. A value of 1 as the 
+expression corresponds to an interval of approx.1/10 sec. The power on default for the value 
+of the expression is zero.
+Keep in mind when you use WAIT that it is impossible to discontinue with ESC, ON or 
+application keys during WAIT. Execute WAIT 0 to release WAIT. 
+To set an infinite interval, use format 2.
+Press the Enter key to restart the program again. ESC key cannot discontinue the program 
+during WAIT.
+Execute WAIT 0 to release WAIT.
+The WAIT command is valid for all the PRINT,CIRCLE or GPRINT commands used in the 
+program. 
+Do not enter 2nd keys during WAIT.
+At the beginning of a program wait value is 0
+
+Note:
+The WAIT command is not available on personal computers in general. On PCs, the 
+FOR...NEXT statement is used for wait time control as follows:
+50:FOR J=1 TO 500:NEXT J
+
+<I><B>EXAMPLE:</B></I>
+10:WAIT 10
+
+Causes PRINT to wait about 1 second.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+
+<A NAME=close>
+<H3>CLOSE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> CLOSE [# file number, # file number, ...]
+
+<I><B>See Also:</B></I> OPEN
+
+<I><B>PURPOSE:</B></I>
+Closes a file or files on the currently accessed device.
+
+<I><B>REMARKS:</B></I>
+This command closes files with the specified file numbers. If no file number is specified, all 
+files are closed. The file numbers are then released for use with other files.
+
+All files are closed in the following cases:
+
+- An END command is executed.
+- A STOP command is executed.
+- The Program is terminated.
+
+CLOSE immediately after completing file input/output.
+
+<I><B>EXAMPLE:</B></I>
+CLOSE #2, #5
+
+Closes files #2, #5
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=eof>
+<H3>EOF</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> EOF (file number)
+
+<I><B>See Also:</B></I> OPEN
+
+<I><B>PURPOSE:</B></I>
+Determines if the end of a sequential file has been reached.
+
+<I><B>REMARKS:</B></I>
+The EOF function checks if all data in a sequential file (with the specified file number) has 
+been read.
+
+If all data has been read, EOF returns -1 (true) as its function value. If not, EOF returns 0 
+(false). For the device name COM, EOF returns 0.
+An error occurs if a file with the specified number has not been opened for input.
+
+<I><B>EXAMPLE:</B></I>
+IF EOF (1) THEN CLOSE #1
+
+File #1 is closed if all data in that file has been read.
+
+<I><B>EXAMPLE:</B></I>
+10 OPEN "E:TESTDAT" FOR OUTPUT AS #2
+20 PRINT #2, 123,456,789
+30 CLOSE
+40 OPEN "E:TESTDAT" FOR INPUT AS #2
+50 INPUT #2,A,B
+60 X = EOF(2)
+70 INPUT #2,C
+80 Y = EOF(2)
+90 CLOSE
+100 END
+
+[60] Not all date has been read in this line. X = 0.
+[80] All data has been read. Y = -1.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=erl>
+<H3>ERL</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ERL
+
+<I><B>See Also:</B></I>  ERN,ON ERROR GOTO
+
+<I><B>PURPOSE:</B></I>
+Returns the line number at which an error occurred during program execution.
+
+<I><B>REMARKS:</B></I>
+The ERL function is used with the ERN function and the ON ERROR GOTO statement in 
+error processing routines to control program flow when an error occurs. A line number is 
+only set in ERL if the error occurred during program execution.
+
+ERL will be cleared when program is started
+
+<I><B>EXAMPLE:</B></I>
+See ERN.
+
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=ern>
+<H3>ERN</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> ERN
+
+<I><B>See Also:</B></I>  ERL,ON ERROR GOTO
+
+<I><B>PURPOSE:</B></I>
+Returns the error code number of the execution error.
+
+<I><B>REMARKS:</B></I>
+The ERN function is used with the ERL function and the ON ERROR GOTO statement in 
+error processing routines to control program flow when an error occurs. 
+
+See error list for <A HREF="error.html">a list of error messages</A>.
+
+ERN will be cleared when program is started.
+
+<I><B>EXAMPLE:</B></I>
+ 10 ON ERROR GOTO 100
+ 15 WAIT
+ 20 FOR N = 1 TO 20
+ 30 READ A
+ 40 PRINT A
+ 50 NEXT N
+ 60 END
+100 IF ERL = 30 AND ERN = 53 THEN PRINT "YOU HAVE NO DATA"
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=fre>
+<H3>FRE</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> FRE
+
+<I><B>PURPOSE:</B></I>
+Finds out the number of non-use sectors in memory for save files.
+The estimated value varies depending on how the temporary file is used for
+applications like address book and memo, so that it is only a rough
+standard.
+
+<I><B>REMARKS:</B></I>
+You can input 62 bytes into 1 sector.
+If you want to see the free bytes , please calculate of FRE *62. 
+
+<I><B>EXAMPLE:</B></I>
+10 N = FRE
+20 PRINT "Free area size is";N
+
+<I>Note:</I>
+If FRE function returns 0 , you should not output or append any files.
+Otherwise, an error will occur in the memory shortage soon.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=inputs>
+<H3>INPUT#</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> INPUT# file number, Variable [, Variable...]
+
+<I><B>See Also:</B></I> OPEN, PRINT#  
+
+<I><B>PURPOSE:</B></I>  
+Reads items from sequential files. 
+
+<I><B>REMARKS:</B></I>  
+The file number is the number given to the file when opened for input with the OPEN 
+statement. The file number must be a number specified in an OPEN statement.
+
+Specify variables as follows: 
+-Simple variables(CD, EF$, B$, etc.) 
+-Array elements(B(10),C$(5,5),etc.) 
+
+An error occurs if the file contains less data than the number of specified variables.  If the 
+file contains more data, the rest of the data is ignored. 
+
+The data and variables must be of the same type(e.g.,numeric values must be assigned to 
+numeric variables.)
+
+Use a comma (,), space (&H20), CR(&H0D), LF(&H0A) or CR + LF as a delimiter when data 
+are read into numeric variables. Spaces preceding data are ignored.  
+
+Use a comma(,), CR, LF or CR + LF as a delimiter to read data into character variables. 
+The 256th character is also a delimiter. Spaces preceding data are ignored. If a double 
+quotation mark appears at the beginning of data, data is read up to the next double 
+quotation mark. A comma in a character string enclosed by double quotation marks is 
+assumed not to be a delimiter. 
+
+<I><B>EXAMPLE:</B></I>
+ 10 WAIT
+ 20 A$ = "AB" + CHR$ 34 + "CDE" + CHR$ 34  
+ 30 B$ = CHR$ 34 + "CD,EF" + CHR$ 34  
+ 40 PRINT A$
+ 50 PRINT B$
+ 60 OPEN "E:ABCDEF" FOR OUTPUT AS #2  
+ 70 PRINT #2, A$ ; "," ; B$  
+ 80 CLOSE  
+ 90 OPEN "E:ABCDEF" FOR INPUT AS #2  
+100 INPUT #2, C$, D$
+110 PRINT C$
+120 PRINT D$
+130 CLOSE  
+140 END
+
+Execution 
+        AB"CDE" 
+        "CD,EF" 
+ 	AB"CDE" 
+        CD,EF
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=kill>
+<H3>KILL</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> KILL "E:filename" 
+
+<I><B>PURPOSE:</B></I> 
+Deletes a file on FLASH.
+Filename Length is 1~7.
+
+<I><B>REMARKS:</B></I> 
+Specify the device(E:) and filename.
+
+The file which is opened can't be killed.
+
+<I><B>EXAMPLE:</B></I>  
+KILL"E:PROFIL1" 
+
+Deletes the file PROFIL1 on flash.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=lof>
+<H3>LOF</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> LOF file number  
+
+<I><B>See Also:</B></I> OPEN  
+
+<I><B>PURPOSE:</B></I>  
+Returns the size of the specified file.  
+
+<I><B>REMARKS:</B></I>  
+The LOF command returns the size of a file with the specified file number. The actual size of 
+the file is displayed in bytes. (Max approx. 15000 Byte)
+If the device name is COM (communication), this command returns "0".
+
+An error will occur if the specified file is not opened.
+
+
+<I><B>EXAMPLE:</B></I>  
+10 WAIT
+20 OPEN "E:FILE01" FOR INPUT AS #2  
+30 N=LOF(2)  
+40 PRINT "FILE01 FILE SIZE IN BYTES IS ";N  
+50 CLOSE #2  
+60 END  
+
+[20] Opens the file FILE01 for input.  
+[30-40] Finds the size of the file and prints out the value.  
+[50] Closes the file.  
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=onerror>
+<H3>ON ERROR GOTO</H3>
+</A>
+
+<I><B>FORMAT:</B></I>
+<TABLE>
+<TR><TD ALIGN="LEFT" VALIGN="TOP">1. ON ERROR GOTO</TD><TD>line number<BR>*label</TD></TR>
+<TR><TD>2. ON ERROR GOTO 0</TD><BR></TD></TR>
+</TABLE>
+<PRE>
+<I><B>See Also:</B></I> ERN,ERL,RESUME  
+
+<I><B>PURPOSE:</B></I> 
+Sets up an error trapping routine.
+
+<I><B>REMARKS:</B></I>  
+When the error trap function is enabled, control is transferred to the error routine if an error 
+is detected. An error message is not displayed.
+
+Within an error routine, control can be branched depending on the value of ERN and ERL. 
+The routine is terminated by the RESUME command.
+
+Format 2 clears declaration of error trapping. Declaration of error trapping is also cleared in 
+any of the following cases:
+MyProgram is executed.
+
+The program stops executing if an error occurs within an error routine.
+Release ERROR BRANCH with ON ERROR GO TO 0 before a line including IF and FOR 
+because it will cause an error in the line to cause malfunction.
+The use of RESUME NEXT to deal with errors in a line including OPEN is prohibited 
+because it will cause an error in the line to cause malfunction of RESUME NEXT.
+
+If an ERROR occurs during dealing with an ERROR BRANCH, it may cause malfunction.
+Beware of it when you program.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=open>
+<H3>OPEN</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>
+1. OPEN "E:filename" FOR mode AS # file number  
+2. OPEN "COM:delimiter, end-of-file code" AS # 1
+
+<I><B>See Also:</B></I> CLOSE
+
+<I><B>PURPOSE:</B></I> 
+Format 1 opens the file specified by "E:filename" for use with the specified file number. 
+Subsequent input/output to the file is accomplished by referring to the file number.  
+Formats 2 allow data to be transferred through the serial I/O interface (COM).
+
+<I><B>REMARKS:</B></I> 
+The file number must be from 1 to 5.  
+
+A total of 5 file number control areas for a flash memory and serial I/O interface. However, 
+only one file can be opened as #1 for devices COM.  
+
+
+In format 1 , "mode" specifies the method of access to the file, as follows:  
+INPUT	Specifies sequential input from an existing file.  
+OUTPUT	Specifies sequential output to a file.  
+APPEND	Specifies addition to a sequential file.  
+
+If OUTPUT is specified using an existing filename, that file is erased before the new one is 
+created.  
+
+An error occurs when using the APPEND or INPUT mode if the specified file does not exist.
+An error occurs if an attempt is made to open a file which has already been opened, or 
+allocate a file number which has already been allocated.  
+
+<B><I>Note:</I></B>
+File is made related with BASIC Program. If you delete the BASIC program on the unit then 
+related file will be deleted.
+
+Although one to seven letters can be used as a file name created on
+E:drive, it is recommended to <B>use long names</B> in order to prevent them to
+be the same as file names in other programs. 
+
+File name is max 7 characters. And spaces after characters is not recognized as the file 
+name. ("E:TESTA " and "E:TESTA" are treated as a same file name.)
+
+COM port is only used for #1
+
+CLOSE immediately after completing file input/output.
+Use the POWER key to discontinue a program when a COM port is used.
+
+Do not use "INPUT" and "INKEY$" including "INKEY$(1)" when COM is opened because it may
+cause the communication speed to become unstable.
+
+<I><B>EXAMPLE:</B></I>  
+
+For flash disk E  
+OPEN "E:PRO1" FOR OUTPUT AS #1  
+Creates a new file E named PRO1 with file number 1.  
+
+In format 2, the following parameters can be selected:  
+Delimiter: C, F, L
+  Specifies the type of delimiter to indicate the end of data, end of a program line, etc.  
+  C: Specifies the CR (carriage return)code.  
+  F: Specifies the LF (line feed)code.  
+  L: Specifies the CR code + LF code.  (CR code, LF code or CR+LF code)
+
+End-of-file Code: &H00-&HFF  
+Specifies the end-of-file code used to indicate the end of the program, etc.
+
+Communication parameter is set as follows.  (Not changeable)
+</PRE>
+<TABLE>
+<TR><TD>Speed (bps)</TD><TD>: 9600bps</TD></TR>
+<TR><TD>Parity </TD><TD>:      none</TD></TR>
+<TR><TD>Data bits </TD><TD>:  8 bit</TD></TR>
+<TR><TD>Stop bits </TD><TD>:  2 bit</TD></TR>
+<TR><TD>Flow-control</TD><TD>: none</TD></TR>
+</TABLE>
+<PRE>
+
+Transmitting large sized data at once may cause loss of some data bits.
+
+When you connect PC with this unit, please set DTR to "Disable" of PC side
+software.
+
+
+<I><B>EXAMPLE:</B></I>  
+OPEN"COM:C,&H1A"AS#1 
+C....Delimiter (CR code)  
+&H1A....End-of-file code (&H1A)  
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=paint>
+<H3>PAINT</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> PAINT (expression1, expression2), expression3
+
+<I><B>See Also:</B></I> CIRCLE, GCURSOR, LINE
+
+<I><B>PURPOSE:</B></I> 
+Fills an area encircling a designated point with a designated
+pattern. 
+
+<I><B>REMARKS:</B></I>
+ * Fills an area encircling a point designated by 
+(expression1, expression2) with a pattern designated by the 
+expression3. The pattern which fills inside the circle by CIRCLE command
+and displayed letters are also boundaries.
+*  The values of the expressions 1 and 2 are within a range from -32,768
+to 32,767. However, the expression1 has to be from 0 to 238 and the
+expression 2 from 0 to 69 when the designated point is within the
+screen.
+* When a point outside the screen is designated, the PAINT command is
+ignored.
+* The expression3 indicates a pattern as below:
+     1: Stripe (Vertical)
+     2: Stripe (Horizontal)
+     3: Black
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=prints>
+<H3>PRINT#</H3>
+</A>
+<I><B>FORMAT:</B></I>
+<TABLE>
+<TR><TD ALIGN="LEFT" VALIGN="TOP">PRINT# file number</TD>
+    <TD>, expression [, expression][, or ;]<BR>, string [; string][, or ;]</TD></TR>
+</TABLE>
+<PRE> 
+<I><B>See Also:</B></I> OPEN, INPUT#
+
+<I><B>PURPOSE:</B></I>  
+Writes values of specified variables into a specified file.
+
+<I><B>REMARKS:</B></I>
+PRINT# is valid only for a file opened for OUTPUT or APPEND with the OPEN command. 
+The file number is the number given to the file when opened.
+
+When a character or string element is used, it must not be specified using a comma (,) or 
+semicolon (;):
+PRINT#2,"ABC"
+PRINT#2,A$
+If PRINT#2,"ABC";A$ is executed, no data delimiter is written and "ABC" and A$ cannot be 
+distinguished.
+
+A numeric value is recorded in such a from that the sign (space when it is positive),
+numeric character string, and space appear in that from. The recording format is shown 
+below:
+
+(1) When a comma or semicolon does not follow the data, CR(&H0D) and LF(&H0A) are 
+provided.
+
+<I><B>EXAMPLE:</B></I>
+PRINT #2,-1.2
+   -1.2_ CR LF   ( _ is a space character)
+
+PRINT #2,"ABC"
+    ABC CR LF
+
+(2) When a comma follows the data, 20 bytes are occupied. A numeric value is right justified 
+and a character string is left justified.
+<I><B>EXAMPLE:</B></I>
+
+PRINT#2,"ABC","DEF"
+   ABC- (20 bytes) DEF CR LF
+
+When the character string exceeds 20 bytes, the excess part is written to the next 20-byte 
+area. The maximum size is 254 bytes.
+
+(3) When a semicolon follows the data, it is stored without spaces.
+<I><B>EXAMPLE:</B></I>
+PRINT #2,-1.2;3
+     -1.2  3 CR LF
+
+PRINT#2, "ABC";"DEF"
+     ABCDEF CR LF
+
+in this case, character strings "ABC" and "DEF" are not read separately.
+
+<I><B>EXAMPLE:</B></I>
+10 OPEN "E:DATA" FOR OUTPUT AS #2
+11 N=10
+12 M=10
+15 DIM C$(N,M)
+20 FOR J=0 TO N
+30 FOR K=0 TO M
+40 PRINT #2,C$(J, K)
+50 NEXT K
+60 NEXT J
+70 CLOSE
+
+Note:
+Maximum file size is approx. 15,000 Byte. 
+When memory is full, SYNTAX ERROR occurs.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=resume>
+<H3>RESUME</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I>
+1. RESUME
+2. RESUME NEXT
+3. RESUME	line number
+		*label
+
+<I><B>See Also:</B></I> ON ERROR GOTO
+
+<I><B>PURPOSE:</B></I>
+Resumes program execution at the end of an error handling routine.
+
+<I><B>REMARKS:</B></I>
+RESUME resumes program execution after completing an error handling routine to which 
+control was passed by the ON ERROR GOTO command. This command validifies the ON 
+ERROR GOTO command again. If control is returned to the main program by any other 
+command(GOTO, etc.),execution will be aborted if an error subsequently occurs.
+
+The error handling routine lets you take the necessary action to prevent recurrence of the 
+same error.
+
+Control is returned depending on the format:
+(1) Format 1 returns control to the statement which caused the error. If an error occurs again 
+    in the same statement, the error handling routine is executed again.
+(2) Format 2 returns control to the statement following the error statement.
+(3) Format 3 returns control to the specified line.
+
+
+<I><B>EXAMPLE:</B></I>
+ 10 ON ERROR GOTO 100
+ 20 INPUT A,B
+ 30 PRINT A/B
+   :
+   :
+100 RESUME 20
+   :
+
+If zero is assigned to variable B or an overflow occurs from A/B,control returns to the input 
+routine on line 20 and prompts for correct data entry.
+
+Note:
+Please be sure to put "END" statement after RESUME command
+The use of RESUME NEXT to deal with errors in a line including OPEN is prohibited 
+because it will cause an error in the line to cause malfunction of RESUME NEXT.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+<A NAME=stop>
+<H3>STOP</H3>
+</A>
+<PRE>
+<I><B>FORMAT:</B></I> STOP
+
+<I><B>See Also:</B></I> END
+
+<I><B>PURPOSE:</B></I>
+Signals the end of a program.
+
+<I><B>REMARKS:</B></I>
+The program will be terminated when the STOP statement is executed.
+All opened files are closed.
+This command is same as END command.
+
+</PRE>
+<A HREF="Help.html#Top">Return to Top</A>
+<HR>
+
+
+</BODY>
+</HTML>
